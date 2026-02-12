@@ -4,7 +4,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-screen w-full">
       <h1 className="text-4xl font-bold text-blue-900">
-        Welcome to Lifeline Canada!
+        Mental Health Resources At Your Fingertips
       </h1>
     </div>
   );
