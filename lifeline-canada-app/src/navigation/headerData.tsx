@@ -289,7 +289,7 @@ export const dropdownNavLinks = [
   },
   {
     name: 'Companion Paws',
-    path: '/paws',
+    path: 'https://companionpaws.ca',
     icon: '🐾',
   },
   {
