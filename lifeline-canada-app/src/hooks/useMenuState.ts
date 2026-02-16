@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   getAllResourceLinks,
   getAllPatternInterruptLinks,
-} from '../navigation/navData';
+} from '../navigation/headerData';
 
 export const useMenuState = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

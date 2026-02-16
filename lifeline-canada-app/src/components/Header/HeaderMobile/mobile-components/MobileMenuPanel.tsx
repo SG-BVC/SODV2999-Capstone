@@ -2,7 +2,7 @@
 import {
   mainNavLinks,
   dropdownNavLinks,
-} from '../../../../navigation/navData';
+} from '../../../../navigation/headerData';
 import { MenuItems } from './MenuItems';
 import { DropdownView } from './DropdownView';
 import { Link } from 'react-router-dom';

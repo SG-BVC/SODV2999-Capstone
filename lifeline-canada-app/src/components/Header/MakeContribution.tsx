@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles} from 'lucide-react';
 
 export default function MakeContributionButton() {
   return (
@@ -52,7 +52,7 @@ export default function MakeContributionButton() {
 
       <Link
         to="/get-involved"
-        className="fixed top-10 right-40 w-[120px] flex items-center justify-center group h-10 px-4 rounded-lg text-sm font-bold transition-all duration-300 overflow-hidden z-50"
+        className="fixed top-9 right-40 w-[120px] flex items-center justify-center group h-10 px-4 rounded-lg text-sm font-bold transition-all duration-300 overflow-hidden z-50"
       >
         {/* Animated gradient background - Changed to purple/pink theme */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 group-hover:from-purple-600 group-hover:via-fuchsia-600 group-hover:to-pink-600 transition-all duration-300"></div>
@@ -63,14 +63,15 @@ export default function MakeContributionButton() {
         {/* Glow effect - Updated to match new colors */}
         <div className="absolute -inset-3 bg-gradient-to-r from-purple-400/30 via-fuchsia-400/30 to-pink-400/30 rounded-lg blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
 
-        {/* Content */}
-        <div className="relative flex items-center justify-center gap-2 text-white text-xs">
-          <Heart className="w-4 h-4 animate-pulse" />
-          <span className="tracking-wide">MAKE A CONTRIBUTION</span>
-          <Sparkles className="w-4 h-4 animate-spin-slow" />
-        </div>
+       {/* Content */}
+     
+<div className="relative flex items-center justify-center  text-white text-xs">
 
-        {/* Floating hearts - Using different positions and emojis */}
+  <p className="tracking-wide">MAKE CONTRIBUTION</p>
+ 
+  <Sparkles className="w-4 h-4 animate-spin-slow" />
+</div>
+ {/* Floating hearts - Using different positions and emojis */}
         <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute top-0 -left-2 text-pink-300/60 animate-float-fast text-xs">
             ✨
@@ -85,6 +86,7 @@ export default function MakeContributionButton() {
             💝
           </div>
         </div>
+       
       </Link>
     </>
   );
