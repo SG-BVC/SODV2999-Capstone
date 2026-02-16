@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="absolute sm:sticky top-0 z-50 w-full">
+    <header className="fixed sm:sticky top-0 z-50 w-full">
       {/* Modern gradient with mesh effect */}
       <div className="absolute inset-0 ">
         {/* Mesh gradient overlay */}

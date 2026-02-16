@@ -70,7 +70,9 @@ export const CategoryAccordion = ({
                   style={{ animationDelay: `${linkIndex * 30}ms` }}
                 >
                   {link.icon && (
-                    <span className="text-lg">{typeof link.icon === 'string' ? link.icon : link.icon}</span>
+                    <span className="text-lg">
+                      {typeof link.icon === 'string' ? link.icon : link.icon}
+                    </span>
                   )}
                   <span className="text-gray-700 group-hover/link:text-gray-900 flex-1">
                     {link.name}

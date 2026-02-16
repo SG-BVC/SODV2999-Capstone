@@ -34,10 +34,10 @@ export const HeaderMobileView = ({
     <MenuToggleButton onClick={openMenu} />
 
     {isMenuOpen && (
-      <div className="fixed inset-0 z-50">
+      <div className="fixed inset-0 z-50 ">
         <AnimatedBackdrop isAnimating={isAnimating} onClick={closeMenu} />
 
-        <div className="fixed inset-y-0 right-0 w-full max-w-md min-h-screen">
+        <div className="fixed inset-y-0 right-0 w-full max-w-md min-h-screen ">
           <div className="h-full relative">
             <MobileMenuPanel
               openDropdown={openDropdown}

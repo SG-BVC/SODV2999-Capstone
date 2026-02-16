@@ -1,87 +1,140 @@
-import React from 'react';
-import { Users, HandHeart, BookOpen, Globe, Sparkles } from 'lucide-react';
-import FooterSection from './FooterSection';
-import FooterLink from './FooterLink';
-import FooterSocialLinks from './FooterSocialLinks';
+import { Link } from 'react-router-dom';
+import { AlertCircle, Zap } from 'lucide-react';
+
+// Import your navigation data
 import {
-  Home,
-  Heart,
-  Brain,
-  Smartphone,
-  BookOpen as Book,
-  HandHeart as Hand,
-} from 'lucide-react';
+  resourceCategories,
+  patternInterrupts,
+  dropdownNavLinks
+} from '../../navigation/headerData';
 
 export default function FooterLinksDesktop() {
+  // Split resourceCategories into two halves for two columns
+  const midIndex = Math.floor(resourceCategories.length / 2);
+  const resourcesColumn1 = resourceCategories.slice(0, midIndex);
+  const resourcesColumn2 = resourceCategories.slice(midIndex);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-      <FooterSection
-        title="Quick Links"
-        icon={<Users className="text-blue-400" size={20} />}
-      >
-        <FooterLink to="/about" icon={<Home size={16} />}>
-          About Us
-        </FooterLink>
-        <FooterLink to="/in-crisis" icon={<Heart size={16} />}>
-          In Crisis?
-        </FooterLink>
-        <FooterLink to="/resources" icon={<Book size={16} />}>
-          Resources
-        </FooterLink>
-        <FooterLink to="/pattern-interrupt" icon={<Brain size={16} />}>
-          Pattern Interrupts
-        </FooterLink>
-        <FooterLink to="/the-lifeline-app" icon={<Smartphone size={16} />}>
-          The LifeLine App
-        </FooterLink>
-        <FooterLink to="/get-involved" icon={<Hand size={16} />}>
-          Get Involved
-        </FooterLink>
-      </FooterSection>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* First Column - Emergency, More, App */}
+      <div className="flex flex-col space-y-6">
+        {/* Emergency Section */}
+        <div className="flex flex-col">
+          <h3 className="text-lg font-bold text-white mb-3">Emergency</h3>
+          <Link
+            to="/in-crisis"
+            className="flex items-center gap-2 px-4 py-2 bg-red-600/20 
+                     text-red-300 rounded-lg font-medium hover:bg-red-600/30 
+                     transition-colors w-fit"
+          >
+            <AlertCircle className="w-4 h-4" />
+            <span>In Crisis?</span>
+          </Link>
+        </div>
 
-      <FooterSection
-        title="Support"
-        icon={<HandHeart className="text-blue-400" size={20} />}
-      >
-        <FooterLink to="/contact-us">Contact Us</FooterLink>
-        <FooterLink to="/support">Support Center</FooterLink>
-        <FooterLink to="/email-support">Email Support</FooterLink>
-        <FooterLink to="/make-a-contribution">Make a Contribution</FooterLink>
-        <FooterLink to="/faq">FAQ</FooterLink>
-        <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
-      </FooterSection>
+        {/* More Section */}
+        <div className="flex flex-col">
+          <h3 className="text-lg font-bold text-white mb-3">More</h3>
+          <div className="flex flex-col space-y-2">
+            {dropdownNavLinks.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="flex items-center gap-2 text-gray-300 hover:text-white 
+                         font-medium transition-colors"
+              >
+                {typeof item.icon === 'string' ? (
+                  <span className="text-lg">{item.icon}</span>
+                ) : (
+                  item.icon
+                )}
+                <span>{item.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
 
-      <FooterSection
-        title="Resources"
-        icon={<BookOpen className="text-blue-400" size={20} />}
-      >
-        <FooterLink to="/resources/movies-of-inspiration">
-          Movies of Inspiration
-        </FooterLink>
-        <FooterLink to="/resources/helpful-movies">Helpful Movies</FooterLink>
-        <FooterLink to="/resources/guides">Mental Health Guides</FooterLink>
-        <FooterLink to="/resources/tools">Interactive Tools</FooterLink>
-        <FooterLink to="/resources/stories">Success Stories</FooterLink>
-        <FooterLink to="/research">Research & Studies</FooterLink>
-      </FooterSection>
+        {/* App Section */}
+        <div className="flex flex-col">
+          <h3 className="text-lg font-bold text-white mb-3">App</h3>
+          <Link
+            to="/app"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 
+                     text-blue-300 rounded-lg font-medium hover:bg-blue-600/30 
+                     transition-colors w-fit"
+          >
+            <Zap className="w-4 h-4" />
+            <span>LifeLine App</span>
+          </Link>
+        </div>
+      </div>
 
-      <div className="space-y-8">
-        <FooterSection
-          title="Connect"
-          icon={<Globe className="text-blue-400" size={20} />}
-        >
-          <FooterLink to="/fr">En Français</FooterLink>
-          <FooterLink to="/site-map">Site Map</FooterLink>
-          <FooterLink to="/join-newsletter">Join Our Newsletter</FooterLink>
-          <FooterLink to="/volunteer">Volunteer</FooterLink>
-        </FooterSection>
+      {/* Second Column - Resources Part 1 */}
+      <div className="flex flex-col">
+        <h3 className="text-lg font-bold text-white mb-4">Resources</h3>
+        <div className="flex flex-col space-y-4">
+          {resourcesColumn1.map((category) => (
+            <div key={category.category} className="flex flex-col">
+              <span className="text-gray-300 font-medium mb-1">{category.category}</span>
+              <div className="ml-2 flex flex-col space-y-1">
+                {category.links.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-        <div>
-          <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            Follow Our Journey
-          </h4>
-          <FooterSocialLinks />
+      {/* Third Column - Resources Part 2 */}
+      <div className="flex flex-col">
+        <h3 className="text-lg font-bold text-white mb-4 opacity-0 pointer-events-none">Resources</h3>
+        <div className="flex flex-col space-y-4">
+          {resourcesColumn2.map((category) => (
+            <div key={category.category} className="flex flex-col">
+              <span className="text-gray-300 font-medium mb-1">{category.category}</span>
+              <div className="ml-2 flex flex-col space-y-1">
+                {category.links.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Fourth Column - Pattern Interrupts */}
+      <div className="flex flex-col">
+        <h3 className="text-lg font-bold text-white mb-4">Pattern Interrupts</h3>
+        <div className="flex flex-col space-y-4">
+          {patternInterrupts.map((category) => (
+            <div key={category.category} className="flex flex-col">
+              <span className="text-gray-300 font-medium mb-1">{category.category}</span>
+              <div className="ml-2 flex flex-col space-y-1">
+                {category.links.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
