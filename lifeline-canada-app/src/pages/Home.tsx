@@ -1,14 +1,19 @@
 import React from 'react';
 import HomepageCallToAction from '../components/Home/HomepageCallToAction';
+import MentalHealthHero from '../components/Home/MentalHealthHero';
+import MentalHealthResources from '../components/MentalHealthResources/MentalHealthResources';
+import CrisisSupportBanner from '../components/MentalHealthResources/CrisisSupportBanner';
+import CompanionPawsCanada from '../components/CompanyPaws/CompanionPawsCanada';
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full min-h-screen">
       {/* Welcome Section */}
-      <div className="flex items-center justify-center h-[50vh] w-full">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 text-center px-4">
-          Welcome to Lifeline Canada!
-        </h1>
+      <div className="flex flex-col items-center justify-center w-full">
+       <MentalHealthHero/>
+       <MentalHealthResources/>
+       <CrisisSupportBanner/>
+       <CompanionPawsCanada/>
       </div>
       
       {/* Full Width CTA Section */}
