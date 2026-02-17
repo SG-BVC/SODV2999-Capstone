@@ -25,9 +25,13 @@ export default function Header() {
         {/* Mesh gradient overlay */}
         <div
           className="absolute inset-0 opacity-60"
+          // style={{
+          //   backgroundImage: `radial-gradient(circle at 20% 30%, #3b82f6 0%, transparent 50%), 
+          //             radial-gradient(circle at 80% 70%, #8b5cf6 0%, transparent 50%)`,
+          // }}
+
           style={{
-            backgroundImage: `radial-gradient(circle at 20% 30%, #3b82f6 0%, transparent 50%), 
-                      radial-gradient(circle at 80% 70%, #8b5cf6 0%, transparent 50%)`,
+            backgroundImage: `radial-gradient( #cfc0da 100%, transparent 100%)`,
           }}
         ></div>
       </div>
