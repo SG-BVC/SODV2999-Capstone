@@ -235,9 +235,9 @@ export const patternInterrupts = [
     category: 'Self Help & Tools',
     links: [
       { name: 'Self Management', path: '/pattern/self-management' },
-      { name: 'Coping Mechanisms', path: '/pattern/coping' },
+      { name: 'Coping Mechanisms', path: '/pattern/coping-mechanisms' },
       { name: 'Interactive Mind', path: '/pattern/interactive-mind' },
-      { name: 'Mental Health Apps', path: '/pattern/apps' },
+      { name: 'Mental Health Apps', path: '/pattern/mental-health-apps' },
       {
         name: 'Transform Negative Thoughts',
         path: '/pattern/transform-thoughts',
