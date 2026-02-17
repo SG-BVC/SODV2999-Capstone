@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import FooterNewsletter from './FooterNewsletter';
 import FooterContactInfo from './FooterContactInfo';
 import FooterLinksDesktop from './FooterLinksDesktop';
@@ -7,18 +7,7 @@ import FooterBottomBar from './FooterBottomBar';
 import FooterLogo from './FooterLogo';
 
 export default function Footer() {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    quickLinks: false,
-    support: false,
-    connect: false,
-  });
 
-  const toggleSection = (section: string) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950 text-white overflow-hidden">
@@ -47,8 +36,7 @@ export default function Footer() {
           {/* Mobile Links */}
           <div className="lg:hidden">
             <FooterLinksMobile
-              openSections={openSections}
-              toggleSection={toggleSection}
+            
             />
           </div>
         </div>

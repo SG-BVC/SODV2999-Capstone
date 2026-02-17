@@ -7,6 +7,7 @@ import { MenuItems } from './MenuItems';
 import { DropdownView } from './DropdownView';
 import { Link } from 'react-router-dom';
 import { GetInvolvedButton } from './GetInvolvedButton';
+import { MakeContributionButton } from './makeContribution';
 
 interface MobileMenuPanelProps {
   openDropdown: string | null;
@@ -71,8 +72,8 @@ export const MobileMenuPanel = ({
 
   return (
     <div
-      className={`fixed inset-0 relative bg-gradient-to-b from-white via-white to-gray-50/20 backdrop-blur-sm flex flex-col 
-      transition-all duration-700 ${
+      className={`fixed inset-0 relative bg-gradient-to-b from-white via-white to-gray-50 backdrop-blur-sm flex flex-col 
+      transition-all duration-700 overflow-x-hidden overflow-y-hidden ${
         isAnimating ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
       }`}
     >
@@ -80,7 +81,7 @@ export const MobileMenuPanel = ({
       <div className="absolute top-4 right-4 z-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-red-700 cursor-pointer"
+          className="w-6 h-6 text-red-700 bg-gradient-to-b from-gray-100 via-yellow-200 to-purple-200 cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -95,12 +96,13 @@ export const MobileMenuPanel = ({
         </svg>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1">
         <MenuItems
           mainNavLinks={mainNavLinks}
           onDropdownClick={openDropdownWithAnimation}
           closeMenu={closeMenu}
         />
+        <MakeContributionButton closeMenu={() => {}} />
         <GetInvolvedButton
           closeMenu={function (): void {
             throw new Error('Function not implemented.');
@@ -118,8 +120,8 @@ export const MobileMenuPanel = ({
 const MoreDropdownView = ({ onBack, closeMenu, isAnimating }: any) => {
   return (
     <div
-      className={`absolute inset-0 relative bg-gradient-to-b from-white to-gray-50/20 backdrop-blur-sm flex flex-col 
-      transition-all duration-500 ${
+      className={`absolute inset-0 relative bg-gradient-to-r from-gray-200 via-blue-200 to-purple-50  backdrop-blur-sm flex flex-col 
+      transition-all duration-500 overflow-x-hidden overflow-y-hidden ${
         isAnimating ? 'opacity-0 -translate-x-20' : 'opacity-100 translate-x-0'
       }`}
     >
@@ -127,7 +129,7 @@ const MoreDropdownView = ({ onBack, closeMenu, isAnimating }: any) => {
       <div className="absolute top-3 left-2 z-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-gray-700 cursor-pointer"
+          className="w-6 h-6 text-blue-700 bg-gradient-to-b from-gray-200 via-yellow-200 to-purple-300 cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -143,7 +145,7 @@ const MoreDropdownView = ({ onBack, closeMenu, isAnimating }: any) => {
       </div>
 
       {/* Content */}
-      <div className="flex-2 overflow-y-auto px-10 pt-5">
+      <div className="flex-2 px-10 pt-5">
         <div className="grid grid-cols-2">
           {dropdownNavLinks.map((link, index) => (
             <Link

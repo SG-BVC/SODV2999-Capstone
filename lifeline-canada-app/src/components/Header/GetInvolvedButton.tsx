@@ -5,7 +5,7 @@ export default function GetInvolvedButton() {
   return (
     <Link
       to="/get-involved"
-      className="fixed top-10 right-10 flex items-center justify-center group h-10 px-4 rounded-lg text-sm font-bold transition-all duration-300 overflow-hidden z-50"
+      className="fixed top-10 right-10 w-[120px]  flex items-center justify-center group h-10 px-4 rounded-lg text-sm font-bold transition-all duration-300 overflow-hidden z-50"
     >
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 group-hover:from-emerald-500 group-hover:via-teal-600 group-hover:to-cyan-600 transition-all duration-300"></div>

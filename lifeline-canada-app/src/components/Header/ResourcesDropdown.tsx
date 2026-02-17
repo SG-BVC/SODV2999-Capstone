@@ -119,7 +119,7 @@ export default function ResourcesDropdown({
         >
           <div className="flex bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg overflow-hidden border border-gray-100 max-w-2xl min-h-[320px]">
             {/* Left Categories - Slimmer */}
-            <div className="w-[160px] bg-gradient-to-b from-white to-gray-50/80 border-r border-gray-200/50">
+            <div className="w-[160px] bg-gradient-to-b from-blue-200 via-gray-200 to-pink-100 border-r border-gray-200/50">
               <div className="p-3 border-b border-gray-200/60 bg-gradient-to-r from-white to-gray-50">
                 <h3 className="text-xs font-semibold text-gray-800 tracking-wide uppercase">
                   Categories
@@ -165,7 +165,7 @@ export default function ResourcesDropdown({
             </div>
 
             {/* Right Content - Compact */}
-            <div className="flex-1 bg-gradient-to-br from-white via-gray-50/30 to-white min-w-0">
+            <div className="flex-1 bg-gradient-to-br from-white via-gray-500/30 to-white min-w-0 ">
               {activeCategory && (
                 <div className="p-4 h-full">
                   <div className="flex items-center justify-between mb-3">
@@ -179,7 +179,7 @@ export default function ResourcesDropdown({
                       items
                     </span>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 overflow-y-auto max-h-[260px] pr-1">
+                  <div className="grid grid-cols-2 gap-2 overflow-y-auto max-h-[300px] pr-1">
                     {groupedByCategory
                       .find((g) => g.category === activeCategory)
                       ?.links.map((link) => (

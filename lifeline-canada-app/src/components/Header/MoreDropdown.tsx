@@ -68,7 +68,7 @@ export default function MoreDropdown({
 
           {/* Dropdown menu */}
           <div
-            className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 z-50 py-2 animate-in slide-in-from-top-5 fade-in duration-200"
+            className="absolute right-0 mt-2 w-56 bg-gradient-to-br from-white via-gray-500/30 to-white shadow-xl border border-gray-200 z-50 py-2 animate-in slide-in-from-top-5 fade-in duration-200"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="more-menu-button"

@@ -34,7 +34,7 @@ export const DropdownView = ({
     >
       {/* Back Arrow on Top-Left */}
       <div
-        className="absolute top-4 left-4 z-20 cursor-pointer"
+        className="absolute top-2 left-4 z-20 text-gray-700 bg-gradient-to-b from-white via-blue-700 to-white cursor-pointer"
         onClick={onBack}
         aria-label="Go back"
       >
