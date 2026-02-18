@@ -33,7 +33,7 @@ export default function Header() {
       </div>
 
       {/* Clean glassmorphism */}
-      <div className="relative bg-white/8 backdrop-blur-xl border-b border-white/20">
+      <div className="relative bg-white/8 backdrop-blur-xl border-b border-white/20 max-h-16 sm:max-h-30">
         <div className="flex h-26 w-full items-center justify-between px-6">
           <Logo />
           <nav className="flex items-center">

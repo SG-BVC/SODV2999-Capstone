@@ -1,15 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
+import Resource from './pages/Resource';
+import PatternInterrupt from './pages/PatternInterrupt';
+import ScrollToTop from './navigation/ScrollToTop';
 
 export default function App() {
   return (
-    <Routes>
-      {/* MainLayout wraps all nested pages */}
-      <Route path="/" element={<MainLayout />}>
-        {/* Index route (Home) */}
-        <Route index element={<Home />} />
-      </Route>
-    </Routes>
+    <>
+      <ScrollToTop /> {/* Move Routes to top*/}
+      <Routes>
+        {/* MainLayout wraps all nested pages */}
+        <Route path="/" element={<MainLayout />}>
+          {/* Index route (Home) */}
+          <Route index element={<Home />} />
+          <Route path="/resources" element={<Resource />} />
+          <Route path="/pattern-interrupt" element={<PatternInterrupt />} />
+        </Route>
+      </Routes>
+    </>
   );
 }

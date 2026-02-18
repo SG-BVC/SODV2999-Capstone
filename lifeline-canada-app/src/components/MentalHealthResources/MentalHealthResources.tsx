@@ -1,16 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { mentalHealthCards, type MentalHealthCard } from "../../constants/mental-health-cards";
+import { mentalHealthCards } from "../../constants/mental-health-cards";
+import { MentalHealthCardsGrid } from "../Cards/MentalHealthCard";
 
-// Default fallback for category if undefined
-const formatCategory = (category: string | undefined): string => {
-  if (!category) return "General";
-  return category.charAt(0).toUpperCase() + category.slice(1);
-};
+
 
 const MentalHealthResources: React.FC = () => {
+  const filteredCards = mentalHealthCards.filter(card=> [1,2,6,7,9,20].includes(card.id)); // Show only the first 6 cards on the main page
   return (
-    <section className="relative top-10 sm:top-0 py-24 overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -40,78 +38,7 @@ const MentalHealthResources: React.FC = () => {
           </p>
         </div>
 
-        {/* Cards Grid - Modern Card Design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mentalHealthCards.slice(0, 6).map((card: MentalHealthCard, index) => (
-            <Link
-              to={card.link || '#'}
-              key={card.id}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-gray-100/50"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              {/* Card gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Image Container with floating effect */}
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://via.placeholder.com/600x400?text=💚+Mental+Wellness';
-                  }}
-                />
-                
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                
-                {/* Category Tag with modern design */}
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-sm font-semibold rounded-full text-gray-800 shadow-lg border border-white/50 transform group-hover:scale-105 transition-transform duration-300">
-                    {formatCategory(card.category)}
-                  </span>
-                </div>
-
-                {/* Icon indicator */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Content with modern typography */}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-                  {card.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {card.subtitle}
-                </p>
-                
-                {/* Enhanced Learn More Link */}
-                <div className="flex items-center text-blue-600 font-semibold group/link">
-                  <span className="relative">
-                    Access Resources
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover/link:w-full transition-all duration-300"></span>
-                  </span>
-                  <svg 
-                    className="w-5 h-5 ml-2 group-hover/link:translate-x-2 transition-transform duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Decorative corner accent */}
-              <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-blue-600/10 to-purple-600/10 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </Link>
-          ))}
-        </div>
+       <MentalHealthCardsGrid cards={filteredCards } limit={6} />
 
         {/* Enhanced Show More Button */}
         <div className="text-center mt-20">

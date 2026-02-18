@@ -104,7 +104,7 @@ export default function Logo() {
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
         {/* Icon Container with Hearts */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative bottom-5 sm:bottom-0 sm:flex items-center justify-center">
           {/* Main Logo */}
           <div className="relative">
             <img
@@ -137,7 +137,7 @@ export default function Logo() {
         </div>
 
         {/* Text */}
-        <div className="leading-tight text-[clamp(8px,2vw,14px)]">
+        <div className="relative bottom-5 sm:bottom-0 leading-tight text-[clamp(8px,2vw,14px)]">
           <h1 className="font-black bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 bg-clip-text text-transparent whitespace-nowrap">
             The LifeLine
             <span className="block text-blue-600 text-[clamp(7px,1.8vw,14px)]">

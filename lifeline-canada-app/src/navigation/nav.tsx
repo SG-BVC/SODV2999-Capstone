@@ -267,7 +267,7 @@ export const mainNavLinks = [
   },
   {
     name: 'Pattern Interrupts',
-    path: '/pattern',
+    path: '/pattern-interrupt',
     hasMegaMenu: true,
   },
   {

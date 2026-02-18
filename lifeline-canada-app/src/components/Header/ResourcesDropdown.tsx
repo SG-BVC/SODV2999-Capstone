@@ -1,7 +1,7 @@
 // components/ResourcesDropdown.tsx
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface ResourceLink {
   name: string;
@@ -20,6 +20,7 @@ interface CategoryGroup {
 interface ResourcesDropdownProps {
   resourceLinks: ResourceLink[];
   triggerText: string;
+  triggerPath: string;  // New prop
   emergency?: boolean;
   icon?: React.ReactNode;
   className?: string;
@@ -28,12 +29,15 @@ interface ResourcesDropdownProps {
 export default function ResourcesDropdown({
   resourceLinks,
   triggerText,
+  triggerPath,
   emergency = false,
   icon = null,
   className = '',
 }: ResourcesDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+    const navigate = useNavigate();  // Add useNavigate hook
 
   // Group links by category
   const groupedByCategory: CategoryGroup[] = resourceLinks.reduce(
@@ -62,6 +66,17 @@ export default function ResourcesDropdown({
     }
   };
 
+    const handleButtonClick = () => {
+    // If dropdown is open, close it and navigate
+    if (isOpen) {
+      setIsOpen(false);
+      setActiveCategory(null);
+    }
+    // Navigate to triggerPath
+   // alert(`Navigating to ${triggerPath}`); // Debug alert
+    navigate(triggerPath);
+  };
+
   return (
     <div
       className={`relative ${className} `}
@@ -79,7 +94,7 @@ export default function ResourcesDropdown({
             setActiveCategory(groupedByCategory[0]?.category || null);
           }
         }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleButtonClick}  // Updated click handler
         className={`
           relative flex items-center px-4 py-2 font-medium 
           transition-colors duration-200 focus:outline-none

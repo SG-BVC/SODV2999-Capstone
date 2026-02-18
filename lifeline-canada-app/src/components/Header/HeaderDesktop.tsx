@@ -7,7 +7,7 @@ import {
   dropdownNavLinks,
   getAllResourceLinks,
   getAllPatternInterruptLinks,
-} from '../../navigation/headerData';
+} from '../../navigation/nav';
 import MakeContributionButton from './MakeContribution';
 
 export default function HeaderDesktop() {
@@ -26,6 +26,7 @@ export default function HeaderDesktop() {
                   key={link.path}
                   resourceLinks={resourceLinks}
                   triggerText={link.name}
+                  triggerPath={link.path}  // Pass the path for navigation
                   emergency={link.emergency}
                   icon={link.icon}
                 />
@@ -36,6 +37,7 @@ export default function HeaderDesktop() {
                   key={link.path}
                   resourceLinks={patternInterruptLinks}
                   triggerText={link.name}
+                  triggerPath={link.path}  // Pass the path for navigation
                   emergency={link.emergency}
                   icon={link.icon}
                 />

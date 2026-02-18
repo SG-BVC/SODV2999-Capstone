@@ -6,7 +6,7 @@ import {
   resourceCategories,
   patternInterrupts,
   dropdownNavLinks
-} from '../../navigation/headerData';
+} from '../../navigation/nav';
 
 export default function FooterLinksDesktop() {
   // Split resourceCategories into two halves for two columns
