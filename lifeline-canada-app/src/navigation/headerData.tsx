@@ -216,7 +216,6 @@ export const resourceCategories = [
 /* =========================
    PATTERN INTERRUPTS
 ========================= */
-
 export const patternInterrupts = [
   {
     category: 'Mood & Inspiration',
@@ -238,22 +237,14 @@ export const patternInterrupts = [
       { name: 'Coping Mechanisms', path: '/pattern/coping-mechanisms' },
       { name: 'Interactive Mind', path: '/pattern/interactive-mind' },
       { name: 'Mental Health Apps', path: '/pattern/mental-health-apps' },
-      {
-      name: 'Transform Negative Thoughts',
-      path: '/pattern/transform-negative-thoughts',
-      },
-      {
-      name: 'Words of Wisdom',
-      path: '/pattern/words-of-wisdom',
-      },    
+      { name: 'Transform Negative Thoughts', path: '/pattern/transform-negative-thoughts' },
+      { name: 'Words of Wisdom', path: '/pattern/words-of-wisdom' },
       { name: 'Image Gallery', path: '/pattern/gallery' },
-      {
-      name: 'Acts of Kindness',
-      path: '/pattern/acts-of-kindness',
-      },
+      { name: 'Acts of Kindness', path: '/pattern/acts-of-kindness' },
     ],
   },
 ];
+
 
 /* =========================
    MAIN NAV (4 PRIMARY NAV ITEMS)
