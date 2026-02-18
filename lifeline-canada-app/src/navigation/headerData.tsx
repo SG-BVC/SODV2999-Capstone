@@ -239,12 +239,18 @@ export const patternInterrupts = [
       { name: 'Interactive Mind', path: '/pattern/interactive-mind' },
       { name: 'Mental Health Apps', path: '/pattern/mental-health-apps' },
       {
-        name: 'Transform Negative Thoughts',
-        path: '/pattern/transform-thoughts',
+      name: 'Transform Negative Thoughts',
+      path: '/pattern/transform-negative-thoughts',
       },
-      { name: 'Words of Wisdom', path: '/pattern/wisdom' },
+      {
+      name: 'Words of Wisdom',
+      path: '/pattern/words-of-wisdom',
+      },    
       { name: 'Image Gallery', path: '/pattern/gallery' },
-      { name: 'Acts of Kindness', path: '/pattern/kindness' },
+      {
+      name: 'Acts of Kindness',
+      path: '/pattern/acts-of-kindness',
+      },
     ],
   },
 ];
