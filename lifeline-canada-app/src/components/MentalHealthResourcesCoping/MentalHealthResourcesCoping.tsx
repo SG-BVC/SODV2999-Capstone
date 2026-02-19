@@ -22,8 +22,14 @@ const MentalHealthResourcesCoping: React.FC = () => {
                             Suicidal thoughts can feel overwhelming, but help and practical strategies are available. If you are in immediate danger, call 911 or go to your nearest Emergency Room. The guidance below is adapted from The LifeLine Canada and is intended to provide practical steps and resources.
                         </p>
 
+                        <br />
+
+                        <p>
+                            Below is PDF written by Dr. Joti Samra, R.Psych. and Dr. Dan Bilsker, R.Psych. (Lead Authors), Consortium for Organizational Mental Health (COMH; www.comh.ca), Faculty of Health Sciences, Simon Fraser University, Vancouver, BC.
+                        </p>
+
                         <a
-                            href="https://thelifelinecanada.ca/wp-content/uploads/2016/09/Coping-With-Suicidal-Thoughts.pdf"
+                            href="/assets/Coping-With-Suicidal-Thoughts.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block mt-4 text-purple-700 font-medium underline"

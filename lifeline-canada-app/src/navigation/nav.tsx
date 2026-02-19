@@ -11,7 +11,7 @@ export const resourceCategories = [
     links: [
       {
         name: 'Coping with Suicidal Thoughts',
-        path: '/resources/coping-with-suicidal-thoughts',
+        path: '/resources/suicidal-thoughts',
         icon: '🛡️',
         color: 'from-blue-400 to-cyan-400',
       },
