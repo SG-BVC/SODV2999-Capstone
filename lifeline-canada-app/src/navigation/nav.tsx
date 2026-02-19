@@ -17,7 +17,7 @@ export const resourceCategories = [
       },
       {
         name: 'How Can I Help Someone?',
-        path: '/resources/how-can-i-help-someone',
+        path: '/resources/how-to-help',
         icon: '🤝',
         color: 'from-emerald-400 to-green-400',
       },

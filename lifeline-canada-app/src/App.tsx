@@ -5,6 +5,7 @@ import Resource from './pages/Resource';
 import PatternInterrupt from './pages/PatternInterrupt';
 import ScrollToTop from './navigation/ScrollToTop';
 import ResourceCoping from './pages/ResourceCoping';
+import ResourceHowToHelp from './pages/ResourceHowToHelp';
 
 export default function App() {
   return (
@@ -17,7 +18,9 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/resources" element={<Resource />} />
           <Route path="/pattern-interrupt" element={<PatternInterrupt />} />
+
           <Route path="/resources/suicidal-thoughts" element={<ResourceCoping />} />
+          <Route path="/resources/how-to-help" element={<ResourceHowToHelp />} />
         </Route>
       </Routes>
     </>
