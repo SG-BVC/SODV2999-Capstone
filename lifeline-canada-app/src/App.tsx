@@ -5,12 +5,16 @@ import About from './pages/About';
 import Resources from './pages/Resources';
 import CrisisHelp from './pages/CrisisHelp';
 import Contact from './pages/Contact';
+import PatternTemplate from "./pages/pattern/PatternTemplate";
+
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="pattern/:slug" element={<PatternTemplate />} />
+
 
         {/* New pages (Sprint 1 placeholders) */}
         <Route path="about" element={<About />} />
