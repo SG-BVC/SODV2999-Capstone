@@ -8,6 +8,7 @@ import ResourceCoping from './pages/ResourceCoping';
 import ResourceHowToHelp from './pages/ResourceHowToHelp';
 import ResourceSearchProfessional from './pages/ResourceSearchProfessional';
 import ResourceWarningSigns from './pages/ResourceWarningSigns';
+import ResourceSelfManagement from './pages/ResourceSelfManagement';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/resources/suicidal-thoughts" element={<ResourceCoping />} />
           <Route path="/resources/how-to-help" element={<ResourceHowToHelp />} />
           <Route path="/resources/warning-signs" element={<ResourceWarningSigns />} />
+          <Route path="/resources/self-management" element={<ResourceSelfManagement />} />
           <Route path="/resources/search-professional" element={<ResourceSearchProfessional />} />
         </Route>
       </Routes>
