@@ -75,7 +75,7 @@ export const mentalHealthCards: MentalHealthCard[] = [
     image: ['assets/ResourceImages/Search for a Professional.png'],
     title: "Search for a Professional",
     subtitle: "Find mental health professionals and therapists in your area.",
-    link: "/resources/find-professional",
+    link: "/resources/search-professional",
     category: "professional-help"
   },
 

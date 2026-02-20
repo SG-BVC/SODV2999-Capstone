@@ -457,7 +457,7 @@ const MentalHealthResourcesHowToHelp: React.FC = () => {
 
           <div className="mt-8">
             <a
-              href="/search-professional"
+              href="/resources/search-professional"
               style={{ color: '#ffffff' }}
               className="inline-block px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:scale-[1.02] transform transition"
             >
