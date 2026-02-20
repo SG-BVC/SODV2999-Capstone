@@ -7,6 +7,7 @@ import ScrollToTop from './navigation/ScrollToTop';
 import ResourceCoping from './pages/ResourceCoping';
 import ResourceHowToHelp from './pages/ResourceHowToHelp';
 import ResourceSearchProfessional from './pages/ResourceSearchProfessional';
+import ResourceWarningSigns from './pages/ResourceWarningSigns';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
 
           <Route path="/resources/suicidal-thoughts" element={<ResourceCoping />} />
           <Route path="/resources/how-to-help" element={<ResourceHowToHelp />} />
+          <Route path="/resources/warning-signs" element={<ResourceWarningSigns />} />
           <Route path="/resources/search-professional" element={<ResourceSearchProfessional />} />
         </Route>
       </Routes>

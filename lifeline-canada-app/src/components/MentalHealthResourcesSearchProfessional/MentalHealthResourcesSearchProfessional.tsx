@@ -10,8 +10,10 @@ const MentalHealthResourcesSearchProfessional: React.FC = () => {
           <span className="text-xs sm:text-sm font-medium text-purple-700">Mental Health Support</span>
         </div>
 
-        <h1 className="mt-6 text-3xl sm:text-4xl font-extrabold text-gray-900">
-          Search for a Professional
+        <h1 className="mt-6 text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
+            Search for a Professional
+          </span>
         </h1>
 
         <div className="mt-6 bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/50 text-gray-700">
