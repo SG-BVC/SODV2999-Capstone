@@ -9,6 +9,7 @@ import ResourceHowToHelp from './pages/ResourceHowToHelp';
 import ResourceSearchProfessional from './pages/ResourceSearchProfessional';
 import ResourceWarningSigns from './pages/ResourceWarningSigns';
 import ResourceSelfManagement from './pages/ResourceSelfManagement';
+import ResourceECounselling from './pages/ResourceECounselling';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/resources/warning-signs" element={<ResourceWarningSigns />} />
           <Route path="/resources/self-management" element={<ResourceSelfManagement />} />
           <Route path="/resources/search-professional" element={<ResourceSearchProfessional />} />
+          <Route path="/resources/e-counselling" element={<ResourceECounselling />} />
         </Route>
       </Routes>
     </>

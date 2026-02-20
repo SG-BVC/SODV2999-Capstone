@@ -67,7 +67,7 @@ export const mentalHealthCards: MentalHealthCard[] = [
     image: ['assets/ResourceImages/e-counselling.png'],
     title: "E-Counselling",
     subtitle: "Connect with licensed professionals for online therapy and support.",
-    link: "/resources/counselling",
+    link: "/resources/e-counselling",
     category: "counselling"
   },
   {
