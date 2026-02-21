@@ -14,6 +14,7 @@ import ResourcePTSD from './pages/ResourcePTSD';
 import ResourceGrief from './pages/ResourceGrief';
 import ResourceDepression from './pages/ResourceDepression';
 import ResourceAnxiety from './pages/ResourceAnxiety';
+import ResourceAddiction from './pages/ResourceAddiction';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/resources/grief" element={<ResourceGrief />} />
           <Route path="/resources/depression" element={<ResourceDepression />} />
           <Route path="/resources/anxiety" element={<ResourceAnxiety />} />
+          <Route path="/resources/addiction" element={<ResourceAddiction />} />
         </Route>
       </Routes>
     </>

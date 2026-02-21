@@ -26,7 +26,7 @@ const MentalHealthResourcesCoping: React.FC = () => {
                                 </p>
 
                                 <p className="mt-4">
-                                    Below is PDF written by Dr. Joti Samra, R.Psych. and Dr. Dan Bilsker, R.Psych. (Lead Authors), Consortium for Organizational Mental Health (COMH; www.comh.ca), Faculty of Health Sciences, Simon Fraser University, Vancouver, BC.
+                                    Below is a PDF written by Dr. Joti Samra, R.Psych. and Dr. Dan Bilsker, R.Psych. (Lead Authors), Consortium for Organizational Mental Health (COMH; www.comh.ca), Faculty of Health Sciences, Simon Fraser University, Vancouver, BC.
                                 </p>
 
                                 <a
@@ -35,7 +35,7 @@ const MentalHealthResourcesCoping: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="inline-block mt-4 text-purple-700 font-medium underline"
                                 >
-                                    Download the full PDF (The LifeLine Canada)
+                                    Download full PDF 
                                 </a>
                             </div>
 
