@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
 import copingMain from '../../assets/copingMain.webp';
+import copingPdf from '../../assets/Coping-With-Suicidal-Thoughts.pdf';
 
 const MentalHealthResourcesCoping: React.FC = () => {
     return (
@@ -30,12 +31,12 @@ const MentalHealthResourcesCoping: React.FC = () => {
                                 </p>
 
                                 <a
-                                    href="/assets/Coping-With-Suicidal-Thoughts.pdf"
+                                    href={copingPdf}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-block mt-4 text-purple-700 font-medium underline"
                                 >
-                                    Download full PDF 
+                                    Download PDF 
                                 </a>
                             </div>
 
