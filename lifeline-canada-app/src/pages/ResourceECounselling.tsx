@@ -1,5 +1,4 @@
 import MentalHealthResourcesECounselling from "../components/MentalHealthResourcesECounselling/MentalHealthResourcesECounselling";
-import MentalHealthResourcesHowToHelp from "../components/MentalHealthResourcesHowToHelp/MentalHealthResourcesHowToHelp";
 
 const ResourceECounselling = () => {
     return (

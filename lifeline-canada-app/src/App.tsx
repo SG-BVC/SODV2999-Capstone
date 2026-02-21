@@ -11,6 +11,7 @@ import ResourceWarningSigns from './pages/ResourceWarningSigns';
 import ResourceSelfManagement from './pages/ResourceSelfManagement';
 import ResourceECounselling from './pages/ResourceECounselling';
 import ResourcePTSD from './pages/ResourcePTSD';
+import ResourceGrief from './pages/ResourceGrief';
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/resources/search-professional" element={<ResourceSearchProfessional />} />
           <Route path="/resources/e-counselling" element={<ResourceECounselling />} />
           <Route path="/resources/ptsd" element={<ResourcePTSD />} />
+          <Route path="/resources/grief" element={<ResourceGrief />} />
         </Route>
       </Routes>
     </>
