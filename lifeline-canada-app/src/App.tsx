@@ -13,6 +13,7 @@ import ResourceECounselling from './pages/ResourceECounselling';
 import ResourcePTSD from './pages/ResourcePTSD';
 import ResourceGrief from './pages/ResourceGrief';
 import ResourceDepression from './pages/ResourceDepression';
+import ResourceAnxiety from './pages/ResourceAnxiety';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/resources/ptsd" element={<ResourcePTSD />} />
           <Route path="/resources/grief" element={<ResourceGrief />} />
           <Route path="/resources/depression" element={<ResourceDepression />} />
+          <Route path="/resources/anxiety" element={<ResourceAnxiety />} />
         </Route>
       </Routes>
     </>
