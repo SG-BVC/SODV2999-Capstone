@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Resource from './pages/Resource';
 import PatternInterrupt from './pages/PatternInterrupt';
 import ScrollToTop from './navigation/ScrollToTop';
+import AboutPage from './pages/About';
+import CrisisSupportPage from './pages/CrisisSupportPage';
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/resources" element={<Resource />} />
           <Route path="/pattern-interrupt" element={<PatternInterrupt />} />
+           <Route path="/about" element={<AboutPage />} />
+           <Route path="/in-crisis" element={<CrisisSupportPage />} />
         </Route>
       </Routes>
     </>
