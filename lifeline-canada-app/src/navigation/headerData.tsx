@@ -226,7 +226,7 @@ export const patternInterrupts = [
       { name: 'Emotional Support Videos', path: '/pattern/emotional-support' },
       { name: 'Uplifting Music Videos', path: '/pattern/music' },
       { name: 'Life Changing Books', path: '/pattern/books' },
-      { name: 'Movies of Inspiration', path: '/pattern/movies-inspiration' },
+      { name: 'Movies of Inspiration', path: '/lifeline-app/movies-of-inspiration' },
       { name: 'Helpful Movies', path: '/pattern/helpful-movies' },
     ],
   },
