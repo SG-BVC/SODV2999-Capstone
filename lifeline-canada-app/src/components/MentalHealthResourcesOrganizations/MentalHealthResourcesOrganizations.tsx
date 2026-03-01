@@ -66,7 +66,7 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                         </div>
 
                         <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                            <a href="https://www.suicideinfo.ca" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                            <a href="https://www.suicideinfo.ca/resources/" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                 Centre For Suicide Prevention Canada
                             </a>
                             <p className="mt-3 leading-relaxed">
@@ -84,11 +84,11 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                         </div>
 
                         <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                            <a href="https://sprc.org" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                            <a href="https://www.sp-rc.ca" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                 Suicide Prevention Resource Centre Canada
                             </a>
                             <p className="mt-3 leading-relaxed">
-                                SPRC&apos;s goals are to reduce suicide, suicidal behaviour, and their effects, by promoting positive alternatives and healthy coping skills.
+                                SPRC's goals are to reduce suicide, suicidal behaviour, and their effects, by promoting positive alternatives and healthy coping skills.
                             </p>
                         </div>
 
@@ -111,7 +111,7 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                         </div>
 
                         <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                            <a href="https://sprao.ca" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                            <a href="https://wrspc.ca/about-us/ontario-suicide-prevention-roundtable/" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                 Ontario Suicide Prevention Roundtable
                             </a>
                             <p className="mt-3 leading-relaxed">
@@ -148,7 +148,7 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                             </div>
 
                             <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                                <a href="https://www.samhsa.gov/mental-health" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                                <a href="https://www.samhsa.gov/about/offices-centers/cmhs" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                     Center for Mental Health Services
                                 </a>
                                 <p className="mt-3 leading-relaxed">
@@ -157,7 +157,7 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                             </div>
 
                             <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                                <a href="https://screening.mentalhealthamerica.net" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                                <a href="https://info.sossignsofsuicide.org/bh-beat" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                     Help Yourself. Help Others
                                 </a>
                                 <p className="mt-3 leading-relaxed">
@@ -175,7 +175,7 @@ const MentalHealthResourcesOrganizations: React.FC = () => {
                             </div>
 
                             <div className="rounded-xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm">
-                                <a href="https://www.activeminds.org" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
+                                <a href="https://www.accreditedschoolsonline.org/resources/student-mental-health-resources/" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-purple-700 hover:text-purple-800 underline underline-offset-4">
                                     Student Mental Health Resources
                                 </a>
                                 <p className="mt-3 leading-relaxed">

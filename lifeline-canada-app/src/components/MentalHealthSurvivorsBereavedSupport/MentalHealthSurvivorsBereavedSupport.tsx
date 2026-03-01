@@ -6,12 +6,44 @@ type ProvinceResource = {
   content: string;
 };
 
+const websitePattern = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+
+const normalizeWebsiteUrl = (url: string): string => {
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  return `https://${url}`;
+};
+
+const renderLineWithWebsiteLinks = (line: string): React.ReactNode[] => {
+  return line.split(websitePattern).map((segment, segmentIndex) => {
+    const isWebsite = /^(https?:\/\/[^\s]+|www\.[^\s]+)$/.test(segment);
+
+    if (!isWebsite) {
+      return <React.Fragment key={`text-${segmentIndex}`}>{segment}</React.Fragment>;
+    }
+
+    return (
+      <a
+        key={`link-${segmentIndex}`}
+        href={normalizeWebsiteUrl(segment)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-purple-700 hover:text-purple-800 underline underline-offset-2 break-all"
+      >
+        {segment}
+      </a>
+    );
+  });
+};
+
 const provinceResources: ProvinceResource[] = [
   {
     title: "Alberta",
     content: `CMHA Suicide Services Bereavement Program
 Edmonton, Alberta
-Website: https://edmonton.cmha.ca/programs-services/suicide-grief-support-program
+Website:https://edmonton.cmha.ca/brochure/suicide-bereavement-support-services/
 
 Catholic Family Services – Men’s Support Group
 (for men experiencing any type of loss)
@@ -34,7 +66,7 @@ Peace River, AB T8S 1T4
 Contact: Coordinator, Mental Health Services
 Phone: (780) 624-6151
 email: careen.griffin@pchr.ca
-website: www.pchr.ca
+website: https://www.albertahealthservices.ca
 
 Living with Loss Support Group
 The Last Monday of the Month
@@ -349,7 +381,13 @@ const MentalHealthSurvivorsBereavedSupport: React.FC = () => {
                     <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
                       {contentBlocks.map((block, index) => (
                         <div key={`${province.title}-${index}`} className="rounded-lg border border-purple-100 bg-slate-50/70 p-3">
-                          <p className="leading-relaxed whitespace-pre-line text-sm sm:text-base">{block}</p>
+                          <div className="space-y-1 text-sm sm:text-base">
+                            {block.split("\n").map((line, lineIndex) => (
+                              <p key={`${province.title}-${index}-${lineIndex}`} className="leading-relaxed">
+                                {renderLineWithWebsiteLinks(line)}
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       ))}
                     </div>
