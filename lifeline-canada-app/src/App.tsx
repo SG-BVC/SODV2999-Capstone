@@ -19,6 +19,7 @@ import ResourceAttemptSurvivors from './pages/ResourceAttemptSurvivors';
 import ResourceBereavedSupport from './pages/ResourceBereavedSupport';
 import ResourceOrganizations from './pages/ResourceOrgaanizations';
 import ResourceSurvivorsSuicideLoss from './pages/ResourceSurvivorsSuicideLoss';
+import ResourceSurvivorsAfterSuicideLoss from './pages/ResourceSurvivorsAfterSuicideLoss';
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/resources/bereaved-support" element={<ResourceBereavedSupport />} />
           <Route path="/resources/organizations" element={<ResourceOrganizations />} />
           <Route path="/resources/suicide-loss" element={<ResourceSurvivorsSuicideLoss />} />
+          <Route path='/resources/after-suicide-loss' element={<ResourceSurvivorsAfterSuicideLoss />} />
         </Route>
       </Routes>
     </>
