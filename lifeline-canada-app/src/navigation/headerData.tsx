@@ -216,7 +216,6 @@ export const resourceCategories = [
 /* =========================
    PATTERN INTERRUPTS
 ========================= */
-
 export const patternInterrupts = [
   {
     category: 'Mood & Inspiration',
@@ -227,7 +226,7 @@ export const patternInterrupts = [
       { name: 'Emotional Support Videos', path: '/pattern/emotional-support' },
       { name: 'Uplifting Music Videos', path: '/pattern/music' },
       { name: 'Life Changing Books', path: '/pattern/books' },
-      { name: 'Movies of Inspiration', path: '/pattern/movies-inspiration' },
+      { name: 'Movies of Inspiration', path: '/lifeline-app/movies-of-inspiration' },
       { name: 'Helpful Movies', path: '/pattern/helpful-movies' },
     ],
   },
@@ -235,19 +234,17 @@ export const patternInterrupts = [
     category: 'Self Help & Tools',
     links: [
       { name: 'Self Management', path: '/pattern/self-management' },
-      { name: 'Coping Mechanisms', path: '/pattern/coping' },
+      { name: 'Coping Mechanisms', path: '/pattern/coping-mechanisms' },
       { name: 'Interactive Mind', path: '/pattern/interactive-mind' },
-      { name: 'Mental Health Apps', path: '/pattern/apps' },
-      {
-        name: 'Transform Negative Thoughts',
-        path: '/pattern/transform-thoughts',
-      },
-      { name: 'Words of Wisdom', path: '/pattern/wisdom' },
+      { name: 'Mental Health Apps', path: '/pattern/mental-health-apps' },
+      { name: 'Transform Negative Thoughts', path: '/pattern/transform-negative-thoughts' },
+      { name: 'Words of Wisdom', path: '/pattern/words-of-wisdom' },
       { name: 'Image Gallery', path: '/pattern/gallery' },
-      { name: 'Acts of Kindness', path: '/pattern/kindness' },
+      { name: 'Acts of Kindness', path: '/pattern/acts-of-kindness' },
     ],
   },
 ];
+
 
 /* =========================
    MAIN NAV (4 PRIMARY NAV ITEMS)
