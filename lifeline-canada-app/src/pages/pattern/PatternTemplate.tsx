@@ -2,29 +2,31 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { patternData } from "./patternData";
 
-type ResourceItem = {
-  title: string;
-  description?: string;
-  href?: string;
-  tags?: string[];
-  icon?: string;
-  meta?: string;
-  image?: string;
-  youtubeId?: string;
-  embed?: boolean;
-};
-
 type Page = {
   title: string;
   description: string;
+  longDescription?: string;
   category: string;
   icon?: string;
   color?: string;
   heroImage?: string;
+  resourceLayout?: "grid" | "list";
+  resourceColumns?: 2 | 3 | 4;
   sections?: { heading: string; items: string[] }[];
   resources?: {
     heading: string;
-    items: ResourceItem[];
+    subheading?: string;
+    items: {
+      title: string;
+      description?: string;
+      href?: string;
+      tags?: string[];
+      icon?: string;
+      meta?: string;
+      image?: string;
+      moreText?: string;
+      kind?: "book" | "video" | "link";
+    }[];
   };
 };
 
@@ -32,16 +34,26 @@ function splitGradient(grad?: string) {
   const g = (grad || "from-violet-500 to-fuchsia-500")
     .replace("bg-gradient-to-r", "")
     .trim();
-  const from = (g.match(/from-[\w-]+/)?.[0] || "from-violet-500").replace(
-    "from-",
-    ""
-  );
+  const from = (g.match(/from-[\w-]+/)?.[0] || "from-violet-500").replace("from-", "");
   const to = (g.match(/to-[\w-]+/)?.[0] || "to-fuchsia-500").replace("to-", "");
   return { from, to };
 }
 
 function cx(...s: Array<string | false | undefined | null>) {
   return s.filter(Boolean).join(" ");
+}
+
+function getYouTubeId(url?: string) {
+  if (!url) return null;
+  const v = url.match(/[?&]v=([^&]+)/)?.[1];
+  if (v) return v;
+  const s = url.match(/youtu\.be\/([^?&]+)/)?.[1];
+  if (s) return s;
+  const sh = url.match(/youtube\.com\/shorts\/([^?&/]+)/)?.[1];
+  if (sh) return sh;
+  const e = url.match(/youtube\.com\/embed\/([^?&/]+)/)?.[1];
+  if (e) return e;
+  return null;
 }
 
 function Card({
@@ -105,37 +117,6 @@ function IconBadge({
   );
 }
 
-function getYouTubeId(input?: string) {
-  if (!input) return undefined;
-  const s = input.trim();
-
-  if (/^[a-zA-Z0-9_-]{11}$/.test(s)) return s;
-
-  try {
-    const url = new URL(s);
-    if (url.hostname.includes("youtu.be")) {
-      const id = url.pathname.replace("/", "");
-      return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : undefined;
-    }
-    if (url.hostname.includes("youtube.com")) {
-      const v = url.searchParams.get("v");
-      if (v && /^[a-zA-Z0-9_-]{11}$/.test(v)) return v;
-
-      const path = url.pathname.split("/").filter(Boolean);
-      const embedIdx = path.indexOf("embed");
-      if (embedIdx >= 0 && path[embedIdx + 1]) {
-        const id = path[embedIdx + 1];
-        return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : undefined;
-      }
-    }
-  } catch {
-    return undefined;
-  }
-
-  const m = s.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  return m?.[1];
-}
-
 function Hero({
   page,
   onBack,
@@ -185,6 +166,12 @@ function Hero({
             {page.description}
           </p>
 
+          {page.longDescription ? (
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+              {page.longDescription}
+            </p>
+          ) : null}
+
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
               onClick={onBack}
@@ -209,9 +196,7 @@ function Hero({
           <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <div className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-3">
               <p className="text-xs font-medium text-slate-500">Time</p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">
-                5–10 min
-              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-900">5–10 min</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-3">
               <p className="text-xs font-medium text-slate-500">Effort</p>
@@ -219,9 +204,7 @@ function Hero({
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-3">
               <p className="text-xs font-medium text-slate-500">Best for</p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">
-                Reset
-              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-900">Reset</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-3">
               <p className="text-xs font-medium text-slate-500">Try</p>
@@ -257,8 +240,7 @@ function Hero({
                     Add a hero image to make this page feel more alive.
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
-                    Set <code className="rounded bg-white px-1">heroImage</code>{" "}
-                    in patternData.
+                    Set <code className="rounded bg-white px-1">heroImage</code> in patternData.
                   </p>
                 </div>
               </div>
@@ -295,9 +277,7 @@ function Section({
             {index + 1}
           </IconBadge>
           <div>
-            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-              {heading}
-            </h2>
+            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">{heading}</h2>
             <div
               className={cx(
                 "mt-2 h-1 w-28 rounded-full bg-gradient-to-r",
@@ -314,10 +294,7 @@ function Section({
           <div className="p-6 md:p-7">
             <ol className="list-decimal space-y-3 pl-5 md:columns-2 md:gap-12">
               {items.map((t, i) => (
-                <li
-                  key={i}
-                  className="break-inside-avoid text-[15px] leading-relaxed text-slate-700"
-                >
+                <li key={i} className="break-inside-avoid text-[15px] leading-relaxed text-slate-700">
                   {t}
                 </li>
               ))}
@@ -342,70 +319,150 @@ function Section({
   );
 }
 
-function ResourceGrid({
+function BookList({
   heading,
+  subheading,
   items,
-  from,
-  to,
 }: {
   heading: string;
-  items: ResourceItem[];
-  from: string;
-  to: string;
+  subheading?: string;
+  items: NonNullable<Page["resources"]>["items"];
 }) {
-  if (!items || items.length === 0) return null;
+  if (!items.length) return null;
 
   return (
     <div>
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-            {heading}
-          </h2>
+          <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">{heading}</h2>
+          {subheading ? <p className="mt-2 text-sm text-slate-600">{subheading}</p> : null}
+        </div>
+      </div>
+
+      <div className="mt-8 rounded-3xl bg-white/70 p-6 shadow-sm ring-1 ring-slate-200 backdrop-blur md:p-8">
+        <div className="space-y-10">
+          {items.map((r, idx) => (
+            <div key={r.title}>
+              <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-start">
+                <div className="flex flex-col items-center">
+                  <div className="w-[120px] rounded-xl bg-white shadow-md ring-1 ring-slate-200 md:w-[130px]">
+                    <div className="p-2">
+                      <img
+                        src={r.image || "/images/resources/book-placeholder.jpg"}
+                        alt={r.title}
+                        className="h-[180px] w-full rounded-lg object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {r.href ? (
+                    <a
+                      href={r.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-4 max-w-[220px] text-center text-base font-semibold text-purple-700 hover:underline"
+                    >
+                      {r.title}
+                    </a>
+                  ) : (
+                    <p className="mt-4 max-w-[220px] text-center text-base font-semibold text-purple-700">
+                      {r.title}
+                    </p>
+                  )}
+                </div>
+
+                <div className="md:pt-2">
+                  <p className="leading-7 text-slate-900/90">{r.description}</p>
+                  {r.moreText ? <p className="mt-4 leading-7 text-slate-900/90">{r.moreText}</p> : null}
+                </div>
+              </div>
+
+              {idx !== items.length - 1 ? (
+                <div className="mt-10 flex justify-center">
+                  <div className="h-[2px] w-[78%] rounded-full bg-purple-300" />
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ResourceGrid({
+  heading,
+  subheading,
+  items,
+  from,
+  to,
+  columns = 3,
+}: {
+  heading: string;
+  subheading?: string;
+  items: NonNullable<Page["resources"]>["items"];
+  from: string;
+  to: string;
+  columns?: 2 | 3 | 4;
+}) {
+  if (!items || items.length === 0) return null;
+
+  const gridCols =
+    columns === 4 ? "md:grid-cols-4" : columns === 2 ? "md:grid-cols-2" : "md:grid-cols-3";
+
+  return (
+    <div>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">{heading}</h2>
           <p className="mt-2 text-sm text-slate-600">
-            Pick one video. Watch it fully. Stop when it ends.
+            {subheading || "Pick one item. Use it with intention."}
           </p>
         </div>
 
         <Pill className="hidden md:inline-flex">Professional layout ✨</Pill>
       </div>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-3">
+      <div className={cx("mt-6 grid gap-6", gridCols)}>
         {items.map((r, idx) => {
-          const youtubeId = r.youtubeId || getYouTubeId(r.href);
-          const canEmbed = Boolean(r.embed && youtubeId);
+          const ytId = getYouTubeId(r.href);
+          const isYouTube = Boolean(ytId);
+          const isLink = Boolean(r.href) && !isYouTube;
+          const Wrapper: any = isLink ? "a" : "div";
 
           return (
-            <div key={idx} className="group block rounded-3xl transition">
+            <Wrapper
+              key={idx}
+              href={isLink ? r.href : undefined}
+              target={isLink ? "_blank" : undefined}
+              rel={isLink ? "noreferrer" : undefined}
+              className={cx("group block rounded-3xl transition", isLink && "cursor-pointer")}
+            >
               <Card className="overflow-hidden transition group-hover:shadow-[0_25px_60px_-40px_rgba(2,6,23,0.65)]">
                 <div className="relative w-full overflow-hidden bg-slate-100">
-                  {canEmbed ? (
+                  {isYouTube ? (
                     <div className="aspect-video w-full">
                       <iframe
                         className="h-full w-full"
-                        src={`https://www.youtube.com/embed/${youtubeId}`}
+                        src={`https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1`}
                         title={r.title}
-                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
+                        loading="lazy"
                       />
                     </div>
                   ) : r.image ? (
-                    <img
-                      src={r.image}
-                      alt={r.title}
-                      className="h-40 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  ) : youtubeId ? (
-                    <img
-                      src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`}
-                      alt={r.title}
-                      className="h-40 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
+                    <div className="h-36 w-full">
+                      <img
+                        src={r.image}
+                        alt={r.title}
+                        className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]"
+                        loading="lazy"
+                      />
+                    </div>
                   ) : (
-                    <div className="grid h-40 w-full place-items-center">
+                    <div className="grid h-36 w-full place-items-center">
                       <div
                         className={cx(
                           "grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm",
@@ -414,7 +471,7 @@ function ResourceGrid({
                           `to-${to}`
                         )}
                       >
-                        {r.icon || "▶️"}
+                        {r.icon || "✨"}
                       </div>
                     </div>
                   )}
@@ -423,23 +480,22 @@ function ResourceGrid({
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-base font-semibold text-slate-900">
+                      {r.icon ? `${r.icon} ` : ""}
                       {r.title}
                     </h3>
 
-                    {r.meta && (
+                    {r.meta ? (
                       <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">
                         {r.meta}
                       </span>
-                    )}
+                    ) : null}
                   </div>
 
-                  {r.description && (
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      {r.description}
-                    </p>
-                  )}
+                  {r.description ? (
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{r.description}</p>
+                  ) : null}
 
-                  {r.tags && r.tags.length > 0 && (
+                  {r.tags && r.tags.length > 0 ? (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {r.tags.map((t, i) => (
                         <span
@@ -450,31 +506,26 @@ function ResourceGrid({
                         </span>
                       ))}
                     </div>
-                  )}
+                  ) : null}
 
-                  {r.href && (
-                    <div className="mt-4 flex items-center justify-between">
-                      <span className="text-sm text-slate-500">
-                        Opens in new tab
-                      </span>
-                      <a
-                        href={r.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={cx(
-                          "text-sm font-semibold bg-clip-text text-transparent",
-                          "bg-gradient-to-r",
-                          `from-${from}`,
-                          `to-${to}`
-                        )}
-                      >
-                        Open →
-                      </a>
-                    </div>
-                  )}
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-sm text-slate-500">
+                      {isYouTube ? "Plays here" : isLink ? "Opens in new tab" : "Tip"}
+                    </span>
+                    <span
+                      className={cx(
+                        "bg-clip-text text-sm font-semibold text-transparent",
+                        "bg-gradient-to-r",
+                        `from-${from}`,
+                        `to-${to}`
+                      )}
+                    >
+                      {isYouTube ? "Play →" : isLink ? "Open →" : "Try it →"}
+                    </span>
+                  </div>
                 </div>
               </Card>
-            </div>
+            </Wrapper>
           );
         })}
       </div>
@@ -504,13 +555,13 @@ export default function PatternTemplate() {
   }
 
   const { from, to } = splitGradient(page.color);
-
   const exploreMore = Object.entries(patternData as any)
     .filter(([key]) => key !== slug)
     .slice(0, 6);
 
   const isComedy = slug === "comedy";
-  const isInspiring = slug === "inspiring-videos";
+  const isBooks = slug === "books";
+  const gridColumns = page.resourceColumns || 3;
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_20%_0%,rgba(168,85,247,0.12),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.10),transparent_45%),radial-gradient(circle_at_55%_100%,rgba(16,185,129,0.08),transparent_45%)]">
@@ -554,66 +605,34 @@ export default function PatternTemplate() {
             />
           ))}
 
-          {isInspiring && (
-            <div className="mx-auto max-w-6xl">
-              <Card className="p-6 md:p-10">
-                <div className="grid items-start gap-10 md:grid-cols-2">
-                  <div>
-                    <h2 className="text-3xl font-semibold text-slate-900 mb-3">
-                      Inspiring Videos
-                    </h2>
-                    <div
-                      className={cx(
-                        "mb-6 h-1 w-24 rounded-full bg-gradient-to-r",
-                        `from-${from}`,
-                        `to-${to}`
-                      )}
-                    />
-                    <p className="text-slate-700 leading-7 text-[15.5px] mb-4">
-                      There is so much positive mental health content to choose
-                      from on YouTube. Searching for “Inspiration” or “Inspiring
-                      Videos” can bring up powerful stories, speeches, and
-                      moments that help you reset your mindset and feel more
-                      hopeful.
-                    </p>
-                    <p className="text-slate-700 leading-7 text-[15.5px]">
-                      Here are a few to get you started. Many of these videos
-                      will recommend more like this afterwards — if you get lost,
-                      come back here anytime and pick one more.
-                    </p>
-                  </div>
-
-                  <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-md">
-                    <img
-                      src={page.heroImage || "/images/pattern/inspiring-videos-hero.jpg"}
-                      alt="Inspiring videos"
-                      className="h-[260px] w-full object-cover md:h-[300px]"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </Card>
-            </div>
-          )}
-
-          {page.resources && (
+          {page.resources ? (
             <div id="extras" className="scroll-mt-24">
-              <ResourceGrid
-                heading={page.resources.heading}
-                items={page.resources.items}
-                from={from}
-                to={to}
-              />
+              {isBooks || page.resourceLayout === "list" ? (
+                <BookList
+                  heading={page.resources.heading}
+                  subheading={page.resources.subheading}
+                  items={page.resources.items}
+                />
+              ) : (
+                <ResourceGrid
+                  heading={page.resources.heading}
+                  subheading={page.resources.subheading}
+                  items={page.resources.items}
+                  from={from}
+                  to={to}
+                  columns={gridColumns}
+                />
+              )}
             </div>
-          )}
+          ) : null}
 
-          {isComedy && (
-            <div className="mt-16 max-w-5xl mx-auto space-y-10">
+          {isComedy ? (
+            <div className="mt-16 mx-auto max-w-5xl space-y-10">
               <Card className="p-6 md:p-10">
                 <div className="space-y-14">
-                  <section className="grid md:grid-cols-2 gap-10 items-start">
+                  <section className="grid items-start gap-10 md:grid-cols-2">
                     <div>
-                      <h2 className="text-3xl font-semibold text-slate-900 mb-3">
+                      <h2 className="mb-3 text-3xl font-semibold text-slate-900">
                         Humor and Mental Health
                       </h2>
                       <div
@@ -623,37 +642,33 @@ export default function PatternTemplate() {
                           `to-${to}`
                         )}
                       />
-
-                      <p className="text-slate-700 leading-7 text-[15.5px] mb-4">
-                        Having a good sense of humor can provide both short-term
-                        and long-term benefits for mental health. Laughter triggers
-                        the release of endorphins — natural chemicals in the brain
-                        that promote feelings of happiness and relaxation. These
-                        positive responses can help reduce stress, lower tension,
+                      <p className="mb-4 text-[15.5px] leading-7 text-slate-700">
+                        Having a good sense of humor can provide both short-term and long-term
+                        benefits for mental health. Laughter triggers the release of endorphins —
+                        natural chemicals in the brain that promote feelings of happiness and
+                        relaxation. These positive responses can help reduce stress, lower tension,
                         and improve overall mood.
                       </p>
-
-                      <p className="text-slate-700 leading-7 text-[15.5px]">
-                        Over time, humor can also strengthen social relationships
-                        and improve emotional resilience. Sharing laughter with
-                        others builds connection and creates a sense of belonging.
-                        In difficult moments, humor can help people reframe
-                        challenges, making stressful situations feel more manageable
-                        and less overwhelming.
+                      <p className="text-[15.5px] leading-7 text-slate-700">
+                        Over time, humor can also strengthen social relationships and improve
+                        emotional resilience. Sharing laughter with others builds connection and
+                        creates a sense of belonging. In difficult moments, humor can help people
+                        reframe challenges, making stressful situations feel more manageable and less
+                        overwhelming.
                       </p>
                     </div>
 
                     <img
-                      src="/images/resources/comedy-share.jpg"
+                      src="/images/resources/friends-laughing.webp"
                       alt="People laughing together"
-                      className="w-full h-[280px] object-cover rounded-2xl shadow-md border border-slate-200"
+                      className="h-[280px] w-full rounded-2xl border border-slate-200 object-cover shadow-md"
                       loading="lazy"
                     />
                   </section>
 
-                  <section className="grid md:grid-cols-2 gap-10 items-start">
+                  <section className="grid items-start gap-10 md:grid-cols-2">
                     <div>
-                      <h2 className="text-3xl font-semibold text-slate-900 mb-3">
+                      <h2 className="mb-3 text-3xl font-semibold text-slate-900">
                         Tips to Improve Your Sense of Humor
                       </h2>
                       <div
@@ -663,20 +678,14 @@ export default function PatternTemplate() {
                           `to-${to}`
                         )}
                       />
-
-                      <p className="text-slate-700 leading-7 text-[15.5px] mb-4">
-                        Developing a healthy sense of humor does not mean forcing
-                        jokes or constantly trying to be funny. It often starts
-                        with noticing the lighter moments in everyday life and
-                        allowing yourself to enjoy them. Humor can help shift
+                      <p className="mb-4 text-[15.5px] leading-7 text-slate-700">
+                        Developing a healthy sense of humor does not mean forcing jokes or constantly
+                        trying to be funny. It often starts with noticing the lighter moments in
+                        everyday life and allowing yourself to enjoy them. Humor can help shift
                         perspective and make difficult days feel a little easier.
                       </p>
-
-                      <ul className="list-disc pl-5 space-y-2 text-slate-700 leading-7 text-[15.5px]">
-                        <li>
-                          Watch short comedy clips or stand-up shows that make you
-                          laugh.
-                        </li>
+                      <ul className="list-disc space-y-2 pl-5 text-[15.5px] leading-7 text-slate-700">
+                        <li>Watch short comedy clips or stand-up shows that make you laugh.</li>
                         <li>Spend time with people who enjoy humor and positivity.</li>
                         <li>Take breaks from stress by doing something lighthearted.</li>
                         <li>Share funny moments or stories with friends and family.</li>
@@ -684,26 +693,21 @@ export default function PatternTemplate() {
                     </div>
 
                     <img
-                      src="/images/resources/comedy-playlist.jpg"
-                      alt="Friends laughing"
-                      className="w-full h-[280px] object-cover rounded-2xl shadow-md border border-slate-200"
+                      src="/images/resources/laughter-therapy.jpg.jpeg"
+                      alt="Laughter and connection"
+                      className="h-[280px] w-full rounded-2xl border border-slate-200 object-cover shadow-md"
                       loading="lazy"
                     />
                   </section>
                 </div>
               </Card>
             </div>
-          )}
+          ) : null}
 
           <div id="more" className="scroll-mt-24">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-slate-900 md:text-2xl">
-                Explore more
-              </h3>
-              <Link
-                to="/pattern"
-                className="text-sm text-blue-600 hover:underline"
-              >
+              <h3 className="text-xl font-semibold text-slate-900 md:text-2xl">Explore more</h3>
+              <Link to="/pattern" className="text-sm text-blue-600 hover:underline">
                 View all
               </Link>
             </div>
@@ -725,12 +729,8 @@ export default function PatternTemplate() {
                         Open
                       </span>
                     </div>
-                    <h4 className="mt-4 text-base font-semibold text-slate-900">
-                      {value.title}
-                    </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      {value.description}
-                    </p>
+                    <h4 className="mt-4 text-base font-semibold text-slate-900">{value.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{value.description}</p>
                   </Card>
                 </Link>
               ))}
@@ -741,11 +741,9 @@ export default function PatternTemplate() {
             <Card className="p-6 md:p-7">
               <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <h4 className="text-base font-semibold text-slate-900">
-                    Quick reminder
-                  </h4>
+                  <h4 className="text-base font-semibold text-slate-900">Quick reminder</h4>
                   <p className="mt-1 text-sm text-slate-600">
-                    Don’t try all 30. Pick 1–2, do them once, and repeat what works.
+                    Don’t try all of them. Pick 1–2, do them once, and repeat what works.
                   </p>
                 </div>
 
