@@ -1,130 +1,148 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
+import coverPhoto from "../../assets/warning.jpg";
 
 const MentalHealthResourcesWarningSigns: React.FC = () => {
+  const sectionClassName = "rounded-xl border border-slate-200 bg-white p-5 sm:p-6 text-slate-700";
+
   return (
-    <section className="relative py-20 bg-gradient-to-br from-slate-50 via-white to-purple-50">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
-        <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm border border-purple-100">
-          <Sparkles className="w-4 h-4 text-purple-600" />
-          <span className="text-xs sm:text-sm font-medium text-purple-700">Mental Health Support</span>
+    <section className="w-full bg-slate-50">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold tracking-wide text-slate-600 sm:text-sm">
+          Mental Health Support
         </div>
 
-        <h1 className="mt-6 text-3xl sm:text-4xl font-extrabold tracking-tight">
+        <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
           <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent">
             Warning Signs
           </span>
         </h1>
 
-        <div className="mt-6 bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/50 text-gray-700">
-          <p className="leading-relaxed">
-            What leads to suicide? There is no single cause for suicide. Suicide
-            most often occurs when stressors exceed current coping abilities of
-            someone suffering from a mental health condition. Depression is the
-            most common condition associated with suicide, and it is often
-            undiagnosed or untreated.
-          </p>
+        <p className="mt-4 max-w-3xl leading-relaxed text-slate-700">
+          This page is organized to help you spot warning signs early and respond calmly. Read one section at a time.
+        </p>
 
-          <p className="mt-4 leading-relaxed">
-            Conditions like depression, anxiety and substance problems, especially
-            when unaddressed, increase risk for suicide. Yet it's important to
-            note that most people who actively manage their mental health
-            conditions lead fulfilling lives.
-          </p>
-        </div>
+        <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <div className="grid grid-cols-1 items-stretch lg:grid-cols-[1.35fr_0.95fr]">
+            <div className="h-full p-6 text-slate-700 lg:border-r lg:border-slate-200">
+              <h2 className="text-xl font-semibold text-purple-700">Start Here</h2>
+              <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+                <li>Take any talk of suicide seriously.</li>
+                <li>If someone is in immediate danger, call 911 now.</li>
+                <li>Stay with the person and remove access to lethal means if possible.</li>
+                <li>Contact crisis and professional support as soon as possible.</li>
+              </ul>
+              <p className="mt-4 leading-relaxed">
+                Suicide usually has multiple causes. Risk rises when stress overwhelms coping capacity, especially with untreated depression, anxiety, or substance use.
+              </p>
+            </div>
 
-        <div className="mt-6 bg-white/60 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/50 text-gray-700">
-          <h2 className="text-2xl font-bold">Suicide Warning Signs</h2>
-
-          <p className="mt-3 leading-relaxed">
-            Something to look out for when concerned that a person may be
-            suicidal is a change in behavior or the presence of entirely new
-            behaviors. This is of sharpest concern if the new or changed behavior
-            is related to a painful event, loss, or change. Most people who take
-            their lives exhibit one or more warning signs, either through what
-            they say or what they do.
-          </p>
-
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">If a person talks about:</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Being a burden to others</li>
-              <li>Feeling trapped</li>
-              <li>Experiencing unbearable pain</li>
-              <li>Having no reason to live</li>
-              <li>Killing themselves</li>
-            </ul>
-          </div>
-
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">Specific things to look out for include:</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Increased use of alcohol or drugs</li>
-              <li>Looking for means, such as searching online for materials</li>
-              <li>Acting recklessly</li>
-              <li>Withdrawing from activities</li>
-              <li>Isolating from family and friends</li>
-              <li>Sleeping too much or too little</li>
-              <li>Visiting/calling people to say goodbye</li>
-              <li>Giving away prized possessions</li>
-              <li>Aggression</li>
-            </ul>
-          </div>
-
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">Those in crisis often display one or more of the following moods:</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Depression</li>
-              <li>Loss of interest</li>
-              <li>Rage</li>
-              <li>Irritability</li>
-              <li>Humiliation</li>
-              <li>Anxiety</li>
-            </ul>
+            <div className="h-full min-h-[240px] bg-slate-100/70 p-2 lg:min-h-full">
+              <img
+                src={coverPhoto}
+                alt="Warning signs support"
+                className="h-full w-full rounded-lg object-cover object-center shadow-sm"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="mt-6 bg-white/60 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/50 text-gray-700">
-          <h2 className="text-2xl font-bold">Suicide Risk Factors</h2>
+        <div className="mt-6 rounded-xl border border-rose-200 bg-rose-50 p-4 text-rose-900">
+          <p className="font-semibold">Emergency:</p>
+          <p className="mt-1">If the person has a plan, means, and intent, call 911 immediately and stay with them.</p>
+        </div>
 
-          <p className="mt-3 leading-relaxed">
-            Risk factors are characteristics or conditions that increase the
-            chance that a person may try to take their life.
-          </p>
+        <div className="mt-6 space-y-4">
+          <details className={sectionClassName} open>
+            <summary className="cursor-pointer text-lg font-semibold text-purple-700">Suicide Warning Signs</summary>
+            <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 lg:col-span-3">
+                <p className="text-sm font-semibold uppercase tracking-wide text-slate-600">Main points</p>
+                <ul className="mt-2 list-disc space-y-1 pl-5 leading-relaxed">
+                  <li>New or changed behavior after pain, loss, or major stress should be treated seriously.</li>
+                  <li>Most people show one or more warning signs in words, actions, or mood.</li>
+                  <li>Early support can reduce risk.</li>
+                </ul>
+              </div>
 
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">Health Factors</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Mental health conditions</li>
-              <li>Depression</li>
-              <li>Bipolar (manic-depressive) disorder</li>
-              <li>Schizophrenia</li>
-              <li>Borderline/antisocial personality disorder</li>
-              <li>Conduct disorder</li>
-              <li>Psychotic disorders/symptoms</li>
-              <li>Anxiety disorders</li>
-              <li>Substance abuse disorders</li>
-              <li>Serious or chronic health condition/pain</li>
-            </ul>
-          </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">If a person talks about</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Being a burden to others</li>
+                  <li>Feeling trapped</li>
+                  <li>Unbearable pain</li>
+                  <li>Having no reason to live</li>
+                  <li>Killing themselves</li>
+                </ul>
+              </div>
 
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">Environmental Factors</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Stressful life events which may include a death, divorce, or job loss</li>
-              <li>Prolonged stress factors which may include harassment, bullying, relationship problems, and unemployment</li>
-              <li>Access to lethal means including firearms and drugs</li>
-              <li>Exposure to another person's suicide, or to graphic or sensationalized accounts of suicide</li>
-            </ul>
-          </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">Behavior changes to watch for</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Increased alcohol or drug use</li>
+                  <li>Looking for means online or in person</li>
+                  <li>Reckless behavior</li>
+                  <li>Withdrawal and isolation</li>
+                  <li>Sleep changes (too much or too little)</li>
+                  <li>Saying goodbye or giving away possessions</li>
+                  <li>Aggression</li>
+                </ul>
+              </div>
 
-          <div className="mt-4">
-            <h3 className="text-xl font-semibold">Historical Factors</h3>
-            <ul className="list-disc ml-6 mt-2 space-y-2 text-base text-gray-700">
-              <li>Previous suicide attempts</li>
-              <li>Family history of suicide attempt</li>
-            </ul>
-          </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">Common crisis moods</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Depression</li>
+                  <li>Loss of interest</li>
+                  <li>Rage or irritability</li>
+                  <li>Humiliation</li>
+                  <li>Anxiety</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details className={sectionClassName}>
+            <summary className="cursor-pointer text-lg font-semibold text-purple-700">Suicide Risk Factors</summary>
+            <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 lg:col-span-3">
+                <p className="text-sm font-semibold uppercase tracking-wide text-slate-600">Main points</p>
+                <ul className="mt-2 list-disc space-y-1 pl-5 leading-relaxed">
+                  <li>Risk factors increase vulnerability, but they do not guarantee an attempt.</li>
+                  <li>Multiple risk factors together require faster intervention.</li>
+                  <li>Access to lethal means significantly raises danger.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">Health Factors</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Mental health conditions (depression, bipolar disorder, schizophrenia, anxiety)</li>
+                  <li>Personality or psychotic symptoms</li>
+                  <li>Substance use disorders</li>
+                  <li>Serious chronic illness or pain</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">Environmental Factors</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Major life stressors (death, divorce, job loss)</li>
+                  <li>Ongoing stress (bullying, relationship conflict, unemployment)</li>
+                  <li>Access to firearms or large quantities of medication/drugs</li>
+                  <li>Exposure to another person’s suicide</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-lg font-semibold text-slate-900">Historical Factors</h3>
+                <ul className="mt-2 list-disc space-y-2 pl-5 leading-relaxed">
+                  <li>Previous suicide attempts</li>
+                  <li>Family history of suicide attempts</li>
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
 
         <div className="mt-12 py-12 rounded-xl bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-center">

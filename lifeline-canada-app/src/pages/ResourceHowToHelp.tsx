@@ -1,4 +1,4 @@
-import MentalHealthResourcesHowToHelp from "../components/MentalHealthResourcesHowToHelp/MentalHealthResourcesHowToHelp";
+import MentalHealthResourcesHowToHelp from '../components/MentalHealthResourcesHowToHelp/MentalHealthResourcesHowToHelp';
 
 const ResourceHowToHelp = () => {
     return (

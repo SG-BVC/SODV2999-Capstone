@@ -1,4 +1,4 @@
-import MentalHealthResourcesCoping from "../components/MentalHealthResourcesCoping/MentalHealthResourcesCoping";
+import MentalHealthResourcesCoping from '../components/MentalHealthResourcesCoping/MentalHealthResourcesCoping';
 
 const ResourceCoping = () => {
     return (
