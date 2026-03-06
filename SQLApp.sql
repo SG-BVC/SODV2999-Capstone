@@ -78,7 +78,6 @@ CREATE TABLE support_hotlines (
     priority_color VARCHAR(20) DEFAULT 'blue' -- "Emergency Color Indicators"
 );
 
-
 -- 5. TRACKING (The "History" Branch)
 
 CREATE TABLE activity_history (
