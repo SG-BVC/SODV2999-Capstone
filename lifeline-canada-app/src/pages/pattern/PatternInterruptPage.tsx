@@ -1,4 +1,3 @@
-// pages/PatternInterruptPage.tsx
 import { useLocation } from 'react-router-dom';
 import ImproveYourMood from '../../components/PatternInterrupt/pattern/ImproveYourMood';
 import Comedy from '../../components/PatternInterrupt/pattern/comedy';
@@ -7,6 +6,7 @@ import EmotionalSupportVideos from '../../components/PatternInterrupt/pattern/Em
 import UpliftingMusicVideos from '../../components/PatternInterrupt/pattern/UpliftingMusicVideos';
 import LifeChangingBooks from '../../components/PatternInterrupt/pattern/LifeChangingBooks';
 import Moviesofinspiration from '../../components/PatternInterrupt/pattern/Moviesofinspiration';
+import HelpfulMovies from '../../components/PatternInterrupt/pattern/HelpfulMovies';
 import SelfManagement from '../../components/PatternInterrupt/pattern/SelfManagement';
 import CopingMechanisms from '../../components/PatternInterrupt/pattern/CopingMechanisms';
 import InteractiveMind from '../../components/PatternInterrupt/pattern/InteractiveMind';
@@ -26,7 +26,7 @@ const components: Record<string, React.ComponentType> = {
   'music': UpliftingMusicVideos,
   'books': LifeChangingBooks,
   'movies-inspiration': Moviesofinspiration,
-  'helpful-movies': Moviesofinspiration, 
+  'helpful-movies': HelpfulMovies,
   'self-management': SelfManagement,
   'coping': CopingMechanisms,
   'interactive-mind': InteractiveMind,
@@ -42,5 +42,5 @@ export default function PatternInterruptPage() {
   const path = location.pathname.replace('/pattern/', '');
   const Component = components[path];
   
-  return Component ? <Component /> : <NotFound/>;
+  return Component ? <Component /> : <NotFound />;
 }

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 type VideoRow = {
@@ -16,7 +15,7 @@ const videoRows: VideoRow[] = [
     alt: "It Gets Better",
     text:
       "Video campaign against LGTBQ bullying and suicide, with people creating and sharing stories of hope that life improves after high school. Many LGBT youth can't picture what their lives might be like as openly gay adults. They can't imagine a future for themselves. So let's show them what our lives are like, let's show them what the future may hold in store for them.",
-    href: "#",
+    href: "https://itgetsbetter.org/",
   },
   {
     title: "Suicidal? It’s ok. You can get through it. Please Talk",
@@ -24,7 +23,7 @@ const videoRows: VideoRow[] = [
     alt: "Please talk video",
     text:
       "Jonny was diagnosed with a combination of schizophrenia and depression. Since then he has had various relapses which he documented on this channel. He has produced and presented documentaries on BBC Three and Channel 4 on the subject of mental health.",
-    href: "#",
+    href: "https://youtu.be/VOjY2BM6JGA?si=Jho4MU0gW4oK0VWD",
   },
   {
     title: "Suicide and a Safety Plan",
@@ -32,7 +31,7 @@ const videoRows: VideoRow[] = [
     alt: "Suicide and a safety plan",
     text:
       "The great thing about a safety plan is that we can create them with our therapist (if we are seeing one) or on our own. They need to be unique to us and realistic.",
-    href: "#",
+    href: "https://youtu.be/tfDruc0QDCc?si=Gti7_5e11fYtG9T5",
   },
   {
     title: "Suicidal? Take Some Pause For Thought",
@@ -40,7 +39,7 @@ const videoRows: VideoRow[] = [
     alt: "Pause for thought",
     text:
       "Existential therapist Emmy van Deurzen speaks about suicide.",
-    href: "#",
+    href: "https://youtu.be/_IW4pyba3DE?si=6Lbr6VZ6_QpQXIBj",
   },
   {
     title: "The Laughing Heart written by Charles Bukowski",
@@ -48,7 +47,7 @@ const videoRows: VideoRow[] = [
     alt: "The Laughing Heart",
     text:
       "The animation is based on 'The Laughing Heart' written by Charles Bukowski and spoken by Tom Waits. I've interpreted Bukowski's words through a story of an aged man reflecting on his life.",
-    href: "#",
+    href: "https://youtu.be/nEbIuDuW7l8?si=LwEt4CoJvRxRr1HO",
   },
   {
     title: "IDrankTheSeaWater",
@@ -56,7 +55,7 @@ const videoRows: VideoRow[] = [
     alt: "IDrankTheSeaWater",
     text:
       "I am a mental health and Tourette syndrome YouTuber. I raise awareness for Self-harm, Eating disorders, Suicide, OCD, PTSD, Maladaptive Daydreaming, Dissociative Identity Disorder...etc.",
-    href: "#",
+    href: "https://www.youtube.com/@IDrankTheSeaWater/about",
   },
 ];
 
@@ -76,13 +75,23 @@ function VideoItem({ row }: { row: VideoRow }) {
 
   return (
     <div className="border-t border-[#b9a9c4] py-6">
-      <div className="grid gap-6 md:grid-cols-[130px_1fr] md:items-start">
+      <div className="grid gap-6 md:grid-cols-[190px_1fr] md:items-start">
         <div>
-          <img
-            src={row.image}
-            alt={row.alt}
-            className="w-[110px] object-cover shadow-[0_4px_8px_rgba(0,0,0,0.18)]"
-          />
+          {row.href ? (
+            <a href={row.href} target="_blank" rel="noreferrer">
+              <img
+                src={row.image}
+                alt={row.alt}
+                className="w-[170px] object-cover shadow-[0_4px_8px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:scale-105"
+              />
+            </a>
+          ) : (
+            <img
+              src={row.image}
+              alt={row.alt}
+              className="w-[170px] object-cover shadow-[0_4px_8px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:scale-105"
+            />
+          )}
         </div>
 
         <div>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-  "build": "tsc -b || true && vite build",
+    "build": "tsc -b || true && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\""
@@ -14,7 +14,7 @@
     "@react-oauth/google": "^0.13.4",
     "axios": "^1.13.6",
     "dompurify": "^3.3.3",
-    "framer-motion": "^12.34.5",
+    "framer-motion": "^12.38.0",
     "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

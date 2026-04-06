@@ -33,6 +33,7 @@ import ResourceRoutes from './routes/ResourceRoutes'; // Import the new resource
 import { AuthProvider } from './context/AuthProvider';
 import PatternInterruptRoutes from './routes/PatternInterruptRoutes';
 
+
 export default function App() {
   return (
     <>
