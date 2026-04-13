@@ -242,43 +242,35 @@ export default function ResourcesDropdown({
                       .find((g) => g.category === activeCategory)
                       ?.links.map((link) => (
                         <Link
-                          key={link.path}
-                          to={link.path}
-                          className="group px-3 py-2.5 rounded-lg border border-gray-100 
-                                   hover:border-blue-200 hover:shadow-sm 
-                                   bg-gradient-to-r from-white to-gray-50/50
-                                   hover:from-blue-50/30 hover:to-white
-                                   transition-all duration-150"
-                          onClick={handleLinkClick}
+                        key={link.path}
+                        to={link.path}
+                        className="group px-3 py-2.5 rounded-lg border border-gray-100 
+                        hover:border-blue-200 hover:shadow-sm 
+                        bg-gradient-to-r from-white to-gray-50/50
+                        hover:from-blue-50/30 hover:to-white
+                        transition-all duration-150"
+                        onClick={handleLinkClick}
                         >
-                          <div className="flex items-center min-w-0">
-                            {link.icon && (
-                              <span
-                                className="mr-2 text-gray-500 group-hover:text-blue-500 
-                                           transition-colors duration-150 shrink-0 text-sm"
-                              >
-                                {link.icon}
-                              </span>
-                            )}
-                            <div className="flex-1 min-w-0">
-                              <span
-                                className="text-xs text-gray-700 group-hover:text-gray-900 
-                                           font-medium block truncate"
-                                title={link.name}
-                              >
-                                {link.name}
-                              </span>
-                            </div>
-                            {link.featured && (
-                              <span
-                                className="ml-1.5 text-[10px] font-medium text-amber-600 
-                                           bg-amber-50 px-1.5 py-0.5 rounded-full shrink-0"
-                              >
-                                ★
-                              </span>
-                            )}
-                          </div>
-                        </Link>
+                  <div className="flex items-center min-w-0">
+                  {link.icon && (
+                  <span
+                  className="mr-2 text-gray-500 group-hover:text-blue-500 
+                  transition-colors duration-150 shrink-0 text-sm"
+                  >
+                  {link.icon}
+                  </span>
+                  )}
+                  <div className="flex-1 min-w-0">
+                  <span
+                  className="text-xs text-gray-700 group-hover:text-gray-900 
+                  font-medium block truncate"
+                  title={link.name}
+                  >
+                 {link.name}
+                 </span>
+               </div>
+              </div>
+              </Link>
                       ))}
                   </div>
                 </div>

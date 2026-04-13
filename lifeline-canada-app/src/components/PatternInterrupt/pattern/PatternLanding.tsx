@@ -11,28 +11,30 @@ export default function PatternLanding() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-12">
-      <div>
-        <h2 className="text-xl font-semibold mb-6">
-          Mood & Inspiration
-        </h2>
+    <div className="bg-[#F5F0FA] min-h-screen py-12">
+      <div className="max-w-6xl mx-auto px-6 space-y-16">
+        <div>
+          <h2 className="text-2xl font-semibold text-[#5A2D82] mb-8">
+            Mood & Inspiration
+          </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {moodItems.map(([slug, item]) => (
-            <PatternCard key={slug} slug={slug} item={item} />
-          ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            {moodItems.map(([slug, item]) => (
+              <PatternCard key={slug} slug={slug} item={item} />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <h2 className="text-xl font-semibold mb-6">
-          Self Help & Tools
-        </h2>
+        <div>
+          <h2 className="text-2xl font-semibold text-[#5A2D82] mb-8">
+            Self Help & Tools
+          </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {selfHelpItems.map(([slug, item]) => (
-            <PatternCard key={slug} slug={slug} item={item} />
-          ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            {selfHelpItems.map(([slug, item]) => (
+              <PatternCard key={slug} slug={slug} item={item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ export default function ImproveYourMood() {
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
             <div className="max-w-[700px]">
               <h1
-                className="mb-4 text-[48px] leading-none text-black"
+                className="mb-4 text-[48px] leading-none text-[#89009B]"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 Improve Your Mood
@@ -141,8 +141,7 @@ export default function ImproveYourMood() {
         </div>
 
         {/* Block 2 — text LEFT, images RIGHT */}
-        <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_420px] lg:gap-14">
-          <div
+          <div className="mt-16 grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_520px] lg:gap-14">          <div
             className="max-w-[720px] space-y-5 text-[20px] leading-[1.5] text-black"
             style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
           >
@@ -210,19 +209,20 @@ export default function ImproveYourMood() {
               lacking.
             </p>
           </div>
+      <div className="flex flex-col items-end justify-start gap-12 self-start">
 
-          <div className="flex flex-col items-center gap-8 lg:items-end lg:pt-1">
-            <img
-              src="/images/improve-your-mood/smile.webp"
-              alt="Smile"
-              className="w-full max-w-[400px] object-cover"
-            />
-            <img
-              src="/images/improve-your-mood/mood-2.jpg"
-              alt="Walking outdoors"
-              className="w-full max-w-[400px] object-cover"
-            />
-          </div>
+        <img
+        src="/images/improve-your-mood/smile.webp"
+        alt="Smile"
+        className="w-[500px] h-[480px] object-cover rounded-sm shadow-[0_6px_18px_rgba(0,0,0,0.2)]"
+        />
+
+        <img
+        src="/images/improve-your-mood/mood-2.jpg"
+        alt="Walking outdoors"
+        className="w-[500px] h-[480px] object-cover rounded-sm shadow-[0_6px_18px_rgba(0,0,0,0.2)]"
+        />
+        </div>
         </div>
 
         {/* Block 3 — image LEFT, text RIGHT */}

@@ -40,7 +40,7 @@ export default function Comedy() {
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
             <div className="max-w-[720px]">
               <h1
-                className="mb-4 text-[48px] leading-none text-black"
+                className="mb-4 text-[48px] leading-none text-[#89009B]"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 Comedy
@@ -253,7 +253,7 @@ export default function Comedy() {
             {comedyLinks.map((item, index) => (
               <div key={index}>
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_1fr] lg:gap-10">
-                  <div className="flex justify-start">
+                  <div className="flex justify-start ">
                     <a
                       href={item.href}
                       target="_blank"
@@ -272,15 +272,15 @@ export default function Comedy() {
                     className="max-w-[900px] text-[20px] leading-[1.32] text-black"
                     style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                   >
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[22px] text-[#8d1bb3] hover:underline"
-                    >
-                      {item.title}
-                    </a>
-
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[22px] hover:underline"
+                  style={{ color: "#89009B" }}
+                  >
+                  {item.title}
+                </a>
                     <p className="mt-4">{item.description}</p>
                   </div>
                 </div>

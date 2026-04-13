@@ -82,7 +82,7 @@ function ResourceRowItem({ row }: { row: ResourceRow }) {
             href={row.href}
             target="_blank"
             rel="noreferrer"
-            className="mt-3 inline-flex rounded bg-violet-700 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-violet-800"
+            className="mt-3 inline-flex rounded bg-[#89009B]-700 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-violet-800"
           >
             {row.button}
           </a>
@@ -97,7 +97,7 @@ function ResourceRowItem({ row }: { row: ResourceRow }) {
             href={row.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex text-sm font-medium text-blue-600 hover:underline"
+            className="inline-flex text-sm font-medium text-[#89009B] hover:underline"
           >
             Visit resource
           </a>
@@ -122,7 +122,7 @@ export default function InteractiveMind() {
         <section className="bg-gradient-to-r from-[#efe7f7] to-[#e9eef9] px-10 py-16">
           <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+              <h1 className="text-4xl font-semibold leading-tight text-[#89009B] md:text-5xl">
                 Interactive Mind
               </h1>
 

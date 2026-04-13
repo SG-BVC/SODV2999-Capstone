@@ -137,8 +137,9 @@ function CategoryCardItem({ card }: { card: CategoryCard }) {
         src={card.image}
         alt={card.alt}
         className="mx-auto h-[150px] w-[150px] rounded-[28px] object-cover shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
-      />
-      <p className="mt-4 text-[17px] text-violet-700">{card.title}</p>
+      /><p className="mt-4 text-[17px]" style={{ color: "#89009B" }}>
+  {card.title}
+</p>
     </a>
   );
 }
@@ -186,7 +187,7 @@ export default function MentalHealthApps() {
         <section className="bg-gradient-to-r from-[#efe7f7] to-[#e9eef9] px-10 py-16">
           <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+              <h1 className="text-4xl font-semibold leading-tight text-[#89009B] md:text-5xl">
                 Mental Health Apps
               </h1>
 

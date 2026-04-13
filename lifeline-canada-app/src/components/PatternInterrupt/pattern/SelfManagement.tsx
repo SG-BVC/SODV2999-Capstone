@@ -115,7 +115,7 @@ export default function SelfManagement() {
       <section className="w-full bg-[#dcd6e6]">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-12 px-10 py-16">
           <div className="max-w-[520px]">
-            <h1 className="font-serif text-[52px] text-black">
+            <h1 className="font-serif text-[52px] text-[#89009B]">
               Self Management
             </h1>
 

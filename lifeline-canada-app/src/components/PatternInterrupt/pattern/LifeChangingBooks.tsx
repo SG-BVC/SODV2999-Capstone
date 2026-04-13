@@ -5,8 +5,9 @@ type Book = {
   title: string;
   author: string;
   description: string;
-  isbn: string;       // used to fetch cover from Open Library
+  isbn: string;
   href: string;
+  image?: string;
 };
 
 const books: Book[] = [
@@ -81,6 +82,8 @@ const books: Book[] = [
     description:
       "This poetic, evocative story presents the meditations of an ancient Anasazi tribesman who rejects his family and sets off on a journey through the desert. He walks seven paths, each teaching a lesson symbolized by an element of the natural world: light, wind, water, stone, plants, animals, and, finally, the unity of all beings with the Creator. The Seven Paths reveals a source of wisdom, restoration, and renewal familiar to native people but lost to the rest of us, seven elements among nature that combine to mend human hearts.",
     href: "https://www.amazon.ca/s?k=The+Seven+Paths+Anasazi",
+    image: "/images/pattern/books/the-seven-paths.jpg",
+
   },
   {
     title: "Les Misérables",
@@ -97,6 +100,7 @@ const books: Book[] = [
     description:
       "Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior — to innocence and experience, kindness and cruelty, love and hatred, humor and pathos. With 18 million copies in print and translated into forty languages, this regional story by a young Alabama woman claims universal appeal. Today it is regarded as a masterpiece of American literature.",
     href: "https://www.amazon.ca/s?k=To+Kill+a+Mockingbird+Harper+Lee",
+    image: "/images/pattern/books/to-kill-a-mockingbird.jpg",
   },
   {
     title: "The Road Less Traveled",
@@ -158,35 +162,29 @@ const books: Book[] = [
 
 // Open Library cover URL — free, no API key needed
 function coverUrl(isbn: string) {
-  return `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+  return `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg?default=false`;
 }
-
 // ── Book cover with automatic fallback ───────────────────────────────────────
 function BookCover({ book }: { book: Book }) {
-  const [failed, setFailed] = useState(false);
+  const primarySrc = book.image || coverUrl(book.isbn);
+  const placeholderSrc = "/images/books/book-placeholder.jpg";
 
-  if (failed) {
-    // Clean placeholder when Open Library has no cover
-    return (
-      <div className="w-full aspect-[2/3] rounded-sm bg-gradient-to-br from-[#e7e3f3] to-[#c9c0e8] flex flex-col items-center justify-center p-3 shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
-        <span className="text-4xl mb-2">📖</span>
-        <p className="text-[11px] text-center text-[#5a4d8a] font-medium leading-snug">
-          {book.title}
-        </p>
-      </div>
-    );
-  }
+  const [imgSrc, setImgSrc] = useState<string>(primarySrc);
 
   return (
     <img
-      src={coverUrl(book.isbn)}
+      src={imgSrc}
       alt={`${book.title} cover`}
-      className="w-full rounded-sm shadow-[0_4px_12px_rgba(0,0,0,0.15)] ring-1 ring-black/5 object-cover"
+      className="w-full aspect-[2/3] rounded-sm shadow-[0_4px_12px_rgba(0,0,0,0.15)] ring-1 ring-black/5 object-cover"
       loading="lazy"
-      onError={() => setFailed(true)}
+      onError={() => {
+        if (imgSrc !== placeholderSrc) {
+          setImgSrc(placeholderSrc);
+        }
+      }}
     />
   );
-}
+};
 
 // ── Single book entry ─────────────────────────────────────────────────────────
 function BookEntry({ book, index }: { book: Book; index: number }) {
@@ -198,25 +196,27 @@ function BookEntry({ book, index }: { book: Book; index: number }) {
         <div className="flex flex-col items-center gap-3">
           <BookCover book={book} />
           <a
-            href={book.href}
-            target="_blank"
-            rel="noreferrer"
-            className="text-center text-[12px] font-medium text-[#4c7bd9] hover:underline leading-snug"
+          href={book.href}
+          target="_blank"
+          rel="noreferrer"
+          className="text-center text-[12px] font-medium hover:underline leading-snug"
+          style={{ color: "#89009B", textDecorationColor: "#89009B" }}
           >
-            View on Amazon
+          View on Amazon
           </a>
-        </div>
+          </div>
 
         {/* Right: title + author + description */}
         <div className="pt-1">
-          <a
+            <a
             href={book.href}
             target="_blank"
             rel="noreferrer"
-            className="text-[18px] font-semibold text-[#4c7bd9] hover:underline leading-snug block mb-1"
-          >
+            className="text-[18px] font-semibold hover:underline leading-snug block mb-1"
+            style={{ color: "#89009B", textDecorationColor: "#89009B" }}
+            >
             {book.title}
-          </a>
+            </a>
           <p className="text-[13px] text-[#888] italic mb-3">{book.author}</p>
           {book.description.split("\n\n").map((para, i) => (
             <p key={i} className="text-[15px] leading-7 text-[#333] mb-3 last:mb-0">
@@ -253,7 +253,7 @@ export default function LifeChangingBooks() {
       <section className="w-full bg-[linear-gradient(to_right,#e7e3f3_0%,#e7e3f3_50%,#e8edf7_50%,#e8edf7_100%)]">
         <div className="mx-auto grid max-w-[980px] items-center gap-10 px-6 py-14 md:grid-cols-2">
           <div>
-            <h1 className="font-serif text-[34px] leading-tight text-black md:text-[46px]">
+            <h1 className="font-serif text-[34px] leading-tight text-[#89009B] md:text-[46px]">
               Life Changing Books
             </h1>
             <div className="mt-4 space-y-4 text-[15px] leading-7 text-black">

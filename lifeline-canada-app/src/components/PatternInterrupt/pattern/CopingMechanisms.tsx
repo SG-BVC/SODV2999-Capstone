@@ -157,7 +157,7 @@ export default function CopingMechanisms() {
         <section className="bg-gradient-to-r from-[#efe7f7] to-[#e9eef9] px-10 py-16">
           <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+              <h1 className="text-4xl font-semibold leading-tight text-[#89009B] md:text-5xl ">
                 Coping Mechanisms
               </h1>
 

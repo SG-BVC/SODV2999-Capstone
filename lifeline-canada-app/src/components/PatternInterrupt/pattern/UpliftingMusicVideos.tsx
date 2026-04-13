@@ -129,7 +129,7 @@ export default function UpliftingMusicVideos() {
       {/* LEFT TEXT */}
       <div className="max-w-[560px]">
         <h1
-          className="text-[54px] mb-4"
+          className="text-[54px] mb-4 text-[#89009B]"
           style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
         >
           Uplifting Music Videos

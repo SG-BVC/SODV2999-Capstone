@@ -94,7 +94,7 @@ function HeroSection() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="max-w-[620px]">
             <h1
-              className="text-[48px] leading-none text-black md:text-[64px]"
+              className="text-[48px] leading-none text-[#89009B] md:text-[64px]"
               style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
             >
               Acts of Kindness

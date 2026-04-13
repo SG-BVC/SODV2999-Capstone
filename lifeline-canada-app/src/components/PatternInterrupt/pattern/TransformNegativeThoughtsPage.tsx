@@ -135,45 +135,43 @@ const sections: ArticleSection[] = [
     ],
   },
 ];
-
 function SectionBlock({ section }: { section: ArticleSection }) {
   const textBlock = (
-    <div>
+    <div className="max-w-[720px]">
       <h2 className="text-[26px] leading-tight text-black md:text-[34px]">
         {section.title}
       </h2>
 
-      {section.paragraphs && section.paragraphs.length > 0 ? (
+      {section.paragraphs && section.paragraphs.length > 0 && (
         <div className="mt-4 space-y-4 text-[15px] leading-7 text-black">
           {section.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-      ) : null}
+      )}
 
-      {section.bullets && section.bullets.length > 0 ? (
+      {section.bullets && section.bullets.length > 0 && (
         <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-7 text-black">
           {section.bullets.map((bullet, index) => (
             <li key={index}>{bullet}</li>
           ))}
         </ul>
-      ) : null}
+      )}
     </div>
   );
 
-  const imageBlock = (
-    <div className="flex justify-center">
-      <img
-        src={section.image}
-        alt={section.imageAlt}
-        className="w-full max-w-[420px] object-cover shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
-      />
-    </div>
-  );
-
+ const imageBlock = (
+  <div className="flex justify-center md:justify-center">
+    <img
+      src={section.image}
+      alt={section.imageAlt}
+      className="block w-full max-w-[520px] h-auto object-contain shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+    />
+  </div>
+);
   return (
-    <section className="py-12">
-      <div className="mx-auto grid max-w-[980px] items-start gap-10 px-6 md:grid-cols-2">
+    <section className="py-16">
+      <div className="mx-auto grid max-w-[1200px] items-start gap-16 px-6 md:grid-cols-[1fr_520px]">
         {section.reverse ? (
           <>
             <div className="md:order-2">{textBlock}</div>
@@ -189,25 +187,24 @@ function SectionBlock({ section }: { section: ArticleSection }) {
     </section>
   );
 }
-
 function SuggestedActionsBlock({ section }: { section: ArticleSection }) {
   const bullets = section.bullets || [];
   const firstHalf = bullets.slice(0, Math.ceil(bullets.length / 2));
   const secondHalf = bullets.slice(Math.ceil(bullets.length / 2));
 
   return (
-    <section className="py-12">
-      <div className="mx-auto max-w-[980px] px-6">
+    <section className="py-16">
+      <div className="mx-auto max-w-[1200px] px-6">
         <h2 className="text-[26px] leading-tight text-black md:text-[34px]">
           {section.title}
         </h2>
 
-        <div className="mt-6 grid items-start gap-10 md:grid-cols-2">
-          <div className="flex justify-center">
+        <div className="mt-10 grid items-start gap-16 md:grid-cols-[520px_1fr]">
+          <div className="flex justify-center md:justify-start self-start">
             <img
-              src={section.image}
-              alt={section.imageAlt}
-              className="w-full max-w-[420px] object-cover"
+            src={section.image}
+            alt={section.imageAlt}
+            className="block w-full max-w-[520px] h-auto object-contain shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
             />
           </div>
 
@@ -218,20 +215,21 @@ function SuggestedActionsBlock({ section }: { section: ArticleSection }) {
           </ul>
         </div>
 
-        <div className="mt-8 grid items-start gap-10 md:grid-cols-2">
+        <div className="mt-12 grid items-start gap-16 md:grid-cols-[1fr_520px]">
           <ul className="list-disc space-y-1 pl-5 text-[15px] leading-6 text-black">
             {secondHalf.map((bullet, index) => (
               <li key={index}>{bullet}</li>
             ))}
           </ul>
 
-          <div className="flex justify-center">
-            <img
-              src="/images/pattern/transform-negative/inner-voice.jpg"
-              alt="Mindfulness definition card"
-              className="w-full max-w-[420px] object-cover"
-            />
-          </div>
+          <div className="flex justify-center md:justify-end self-start">
+     
+   <img
+  src="/images/pattern/transform-negative/meditation.jpg"
+  alt="Meditation illustration"
+  className="block w-[320px] md:w-[420px] lg:w-[520px] h-auto shadow-[0_8px_16px_rgba(0,0,0,0.18)]"
+/>
+               </div>
         </div>
       </div>
     </section>
@@ -263,7 +261,7 @@ export default function TransformNegativeThoughts() {
       <section className="w-full bg-[linear-gradient(to_right,#e7e3f3_0%,#e7e3f3_50%,#e8edf7_50%,#e8edf7_100%)]">
         <div className="mx-auto grid max-w-[980px] items-center gap-8 px-6 py-16 md:grid-cols-2">
           <div>
-            <h1 className="font-serif text-[34px] leading-tight text-black md:text-[48px]">
+            <h1 className="font-serif text-[34px] leading-tight text-[#89009B] md:text-[48px]">
               Transform Negative Thoughts
             </h1>
 

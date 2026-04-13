@@ -198,7 +198,7 @@ export default function WordsOfWisdom() {
       <section className="w-full bg-[linear-gradient(to_right,#e7e3f3_0%,#e7e3f3_50%,#e8edf7_50%,#e8edf7_100%)]">
         <div className="mx-auto grid max-w-[980px] items-center gap-10 px-6 py-16 md:grid-cols-2">
           <div>
-            <h1 className="font-serif text-[34px] leading-tight text-black md:text-[50px]">
+            <h1 className="font-serif text-[34px] leading-tight text-[#89009B] md:text-[50px]">
               Words of Wisdom
             </h1>
             <div className="mt-4 space-y-4 text-[15px] leading-7 text-black">

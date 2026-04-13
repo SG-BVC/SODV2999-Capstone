@@ -114,7 +114,7 @@ export default function HelpfulMovies() {
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div className="mx-auto max-w-[460px] text-center md:mx-0 md:max-w-[500px]">
               <h1
-                className="text-[42px] leading-[0.95] text-black md:text-[58px]"
+                className="text-[42px] leading-[0.95] text-[#89009B] md:text-[58px]"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 Helpful Movies

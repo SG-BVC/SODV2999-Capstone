@@ -188,12 +188,13 @@ function MovieCard({ movie }: { movie: Movie }) {
         />
       </a>
 
-      <a
+     <a
         href={`https://www.imdb.com/title/${movie.imdbId}/`}
         target="_blank"
         rel="noreferrer"
-        className="mt-3 text-center text-[14px] font-semibold text-[#4c7bd9] hover:underline px-1"
-      >
+        className="mt-3 text-center text-[14px] font-semibold hover:underline px-1"
+        style={{ color: "#89009B", textDecorationColor: "#89009B" }}
+        >
         {movie.title} ({movie.year})
       </a>
 
@@ -220,7 +221,7 @@ export default function MoviesOfInspiration() {
       <section className="w-full bg-[linear-gradient(to_right,#e7e3f3_0%,#e7e3f3_50%,#e8edf7_50%,#e8edf7_100%)]">
         <div className="mx-auto grid max-w-[980px] items-center gap-10 px-6 py-14 md:grid-cols-2">
           <div>
-            <h1 className="font-serif text-[34px] md:text-[46px]">
+            <h1 className="font-serif text-[34px] md:text-[46px] text-[#89009B]">
               Movies of Inspiration
             </h1>
 
